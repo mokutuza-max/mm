@@ -121,8 +121,23 @@ addEventListener("keydown", (e) => {
     a.length && closeM(a[a.length - 1]);
   }
 });
-const ph = (s) =>
-  s.photo ? `<img src="${s.photo}" alt="${s.name}">` : "<span>ВАКАНТНО</span>";
+// Измененная функция ph
+const ph = (s) => {
+  // Если есть фотография, возвращаем тег img
+  if (s.photo) {
+    return `<img src="${s.photo}" alt="${s.name}">`;
+  } else {
+    // Если фотографии нет, проверяем, есть ли должность
+    // Если должность не указана или пустая, выводим "ВАКАНТНО"
+    if (!s.pos || s.pos.trim() === "") {
+      return "<span>ВАКАНТНО</span>";
+    } else {
+      // Если должность указана, но нет фото, возвращаем пустую строку
+      // чтобы не выводить "ВАКАНТНО" в блоке фотографии
+      return "";
+    }
+  }
+};
 const medal = `<svg viewBox="0 0 100 130" fill="none" stroke="#ff8a1f" stroke-width="2"><path d="M30 0h40l-9 52H39zM50 52v6"/><circle cx="50" cy="88" r="34"/><circle cx="50" cy="88" r="27"/><polygon points="${star(50, 88, 20, 8)}"/></svg>`;
 const awards = (s) => {
   const m = openM(""),
