@@ -1,98 +1,109 @@
+/* Импорт шрифтов */
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=PT+Sans:wght@400;700&display=swap');
 
+/* Переменные цветов */
 :root {
-    --bg: #0a0a0a;
-    --pn: #141414;
-    --ln: #272727;
-    --or: #ff8a1f;
-    --ink: #ececec;
-    --mute: #8f8f8f
+    --bg: #0a0a0a; /* Темно-серый фон */
+    --pn: #141414; /* Более светлый серый для блоков */
+    --ln: #272727; /* Линейный нейтральный */
+    --or: #ff8a1f; /* Оранжевый акцент */
+    --ink: #ececec; /* Основной текст */
+    --mute: #8f8f8f; /* Приглушенный текст */
 }
 
+/* Общие сбросы стилей */
 * {
-    box-sizing: border-box;
-    margin: 0
+    box-sizing: border-box; /* Учет padding и border в размере элемента */
+    margin: 0; /* Убираем внешние отступы по умолчанию */
+    padding: 0; /* Убираем внутренние отступы по умолчанию */
 }
 
+/* Стили для основного элемента страницы */
 body {
-    font: 16px/1.65 'PT Sans', Arial, sans-serif;
-    color: var(--ink);
-    background: var(--bg);
-    min-height: 100vh;
+    font: 16px/1.65 'PT Sans', Arial, sans-serif; /* Шрифт, размер, межстрочный интервал */
+    color: var(--ink); /* Цвет текста */
+    background: var(--bg); /* Цвет фона */
+    min-height: 100vh; /* Минимальная высота страницы равна высоте видимой области */
     display: flex;
-    flex-direction: column
+    flex-direction: column; /* Элементы располагаются в столбец */
 }
 
+/* Стили для основного контента */
 main {
-    flex: 1
+    flex: 1; /* Занимает все доступное пространство между header и footer */
 }
 
-h1,
-h2,
-h3 {
-    font-family: Oswald, Impact, sans-serif;
-    font-weight: 600;
-    line-height: 1.15;
-    text-transform: uppercase;
-    letter-spacing: .03em
+/* Заголовки */
+h1, h2, h3 {
+    font-family: Oswald, Impact, sans-serif; /* Шрифт для заголовков */
+    font-weight: 600; /* Насыщенность шрифта */
+    line-height: 1.15; /* Межстрочный интервал */
+    text-transform: uppercase; /* Все буквы заглавные */
+    letter-spacing: .03em; /* Расстояние между буквами */
 }
 
+/* Контейнер для центрирования контента */
 .wrap {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative
+    max-width: 1120px; /* Максимальная ширина */
+    margin: 0 auto; /* Центрирование по горизонтали */
+    padding: 0 20px; /* Горизонтальные отступы */
+    position: relative; /* Для позиционирования дочерних элементов */
 }
 
+/* Шапка сайта */
 header {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: #0a0a0aee;
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--ln)
+    position: sticky; /* Фиксированное позиционирование при прокрутке */
+    top: 0; /* Прикрепление к верху */
+    z-index: 20; /* Порядок отображения */
+    background: #0a0a0aee; /* Фон с прозрачностью */
+    backdrop-filter: blur(8px); /* Размытие фона */
+    border-bottom: 1px solid var(--ln); /* Нижняя граница */
 }
 
+/* Внутренний блок шапки */
 .bar {
     display: flex;
-    align-items: center;
-    gap: 16px;
-    min-height: 72px;
-    transition: min-height .3s
+    align-items: center; /* Выравнивание по центру по вертикали */
+    gap: 16px; /* Расстояние между элементами */
+    min-height: 72px; /* Минимальная высота */
+    transition: min-height .3s; /* Плавный переход при изменении высоты */
 }
 
+/* Стили для уменьшенной шапки */
 header.sm .bar {
-    min-height: 58px
+    min-height: 58px;
 }
 
+/* Блок бренда (логотип и название) */
 .brand {
     display: flex;
     align-items: center;
     gap: 12px;
-    text-decoration: none;
-    margin-right: auto
+    text-decoration: none; /* Убираем подчеркивание */
+    margin-right: auto; /* Выталкивает навигацию вправо */
 }
 
 .brand svg {
     width: 40px;
-    height: 40px
+    height: 40px;
 }
 
 .brand b {
     font: 600 15px/1.15 Oswald, sans-serif;
     text-transform: uppercase;
     letter-spacing: .08em;
-    display: block
+    display: block;
 }
 
 .brand small {
     font-size: 12px;
-    color: var(--mute)
+    color: var(--mute);
 }
 
+/* Навигационное меню */
 nav {
     display: flex;
-    gap: 6px
+    gap: 6px;
 }
 
 nav a {
@@ -102,103 +113,111 @@ nav a {
     letter-spacing: .08em;
     text-transform: uppercase;
     color: var(--mute);
-    border-bottom: 2px solid transparent;
-    transition: .2s
+    border-bottom: 2px solid transparent; /* Скрытая граница */
+    transition: .2s; /* Плавный переход */
 }
 
 nav a:hover {
-    color: var(--ink)
+    color: var(--ink); /* Цвет при наведении */
 }
 
 nav a.on {
     color: var(--ink);
-    border-color: var(--or)
+    border-color: var(--or); /* Активная ссылка */
 }
 
+/* Индикатор прогресса (пример) */
 .prog {
     height: 2px;
     width: 0;
-    background: var(--or)
+    background: var(--or);
 }
 
+/* Кнопка-бургер для мобильных */
 #burger {
-    display: none;
+    display: none; /* Скрыта по умолчанию */
     background: none;
     border: 1px solid var(--ln);
     color: var(--ink);
     padding: 6px 12px;
     font-size: 20px;
-    cursor: pointer
+    cursor: pointer;
 }
 
+/* Стили для фокуса */
 :focus-visible {
     outline: 2px solid var(--or);
-    outline-offset: 2px
+    outline-offset: 2px;
 }
 
+/* Графический элемент фона (SVG) */
 .bg {
     position: absolute;
-    inset: 0;
+    inset: 0; /* Расположение по всем краям */
     width: 100%;
     height: 100%;
     fill: none;
     stroke: var(--or);
     stroke-width: 1.1;
     opacity: .28;
-    pointer-events: none;
-    mask-image: linear-gradient(90deg, transparent 15%, #000 75%)
+    pointer-events: none; /* Не взаимодействует с событиями мыши */
+    mask-image: linear-gradient(90deg, transparent 15%, #000 75%); /* Маска для эффекта */
 }
 
 .bg * {
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
-    transition: stroke-dashoffset 2.4s ease
+    transition: stroke-dashoffset 2.4s ease; /* Анимация линии */
 }
 
-.in .bg * {
-    stroke-dashoffset: 0
+.in .bg * { /* При добавлении класса 'in' */
+    stroke-dashoffset: 0;
 }
 
+/* Секция Hero (главная секция) */
 .hero {
     position: relative;
-    overflow: hidden;
-    min-height: calc(100vh - 150px);
+    overflow: hidden; /* Обрезка выходящего за пределы */
+    min-height: calc(100vh - 150px); /* Высота минус высота шапки и футера */
     display: grid;
-    place-items: center;
+    place-items: center; /* Центрирование контента */
     text-align: center;
-    padding: 60px 0
+    padding: 60px 0;
 }
 
 .hero .bg {
-    mask-image: radial-gradient(circle, #000 30%, transparent 80%);
-    opacity: .35
+    mask-image: radial-gradient(circle, #000 30%, transparent 80%); /* Другая маска */
+    opacity: .35;
 }
 
 .hero h1 {
-    font-size: clamp(30px, 5.4vw, 62px);
+    font-size: clamp(30px, 5.4vw, 62px); /* Адаптивный размер шрифта */
     max-width: 900px;
-    margin: 0 auto 36px
+    margin: 0 auto 36px;
 }
 
+/* Анимация появления текста */
 .hero h1 span {
     display: inline-block;
     opacity: 0;
     transform: translateY(30px);
-    animation: up .8s var(--d) forwards
+    animation: up .8s var(--d) forwards; /* --d - переменная задержки */
 }
 
 .hero .btn {
     opacity: 0;
-    animation: up .8s 1s forwards
+    animation: up .8s 1s forwards;
 }
 
+/* Клюдреймы анимации */
 @keyframes up {
     to {
         opacity: 1;
-        transform: none
+        transform: none;
     }
 }
 
+/* Кнопки */
 .btn {
     display: inline-block;
     background: var(--or);
@@ -208,170 +227,179 @@ nav a.on {
     font: 600 15px Oswald, sans-serif;
     letter-spacing: .1em;
     text-transform: uppercase;
-    border: 0;
+    border: 0; /* Убираем границу */
     cursor: pointer;
-    transition: .2s
+    transition: .2s;
 }
 
 .btn:hover {
-    background: #ffa047
+    background: #ffa047; /* Цвет при наведении */
 }
 
-.btn.sm {
+.btn.sm { /* Маленькая кнопка */
     padding: 8px 20px;
     font-size: 13px;
     background: none;
     color: var(--ink);
-    border: 1px solid var(--or)
+    border: 1px solid var(--or);
 }
 
 .btn.sm:hover {
     background: var(--or);
-    color: #0a0a0a
+    color: #0a0a0a;
 }
 
+/* Верхняя секция (например, заголовок страницы) */
 .top {
     position: relative;
     overflow: hidden;
     padding: 70px 0 40px;
-    border-bottom: 1px solid var(--ln)
+    border-bottom: 1px solid var(--ln);
 }
 
 .top h1 {
     font-size: 46px;
-    margin-bottom: 10px
+    margin-bottom: 10px;
 }
 
-.top h1:after {
+.top h1:after { /* Подчеркивание заголовка */
     content: "";
     display: block;
     width: 60px;
     height: 3px;
     background: var(--or);
-    margin-top: 14px
+    margin-top: 14px;
 }
 
 .top p {
     color: var(--mute);
-    max-width: 600px
+    max-width: 600px;
 }
 
+/* Стандартная секция */
 section.s {
-    padding: 50px 0
+    padding: 50px 0;
 }
 
 .s h2 {
     font-size: 26px;
-    margin-bottom: 24px
+    margin-bottom: 24px;
 }
 
+/* Сетка для карточек */
 .grid {
     display: grid;
     gap: 18px;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
-    padding: 40px 0
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); /* Адаптивная сетка */
+    padding: 40px 0;
 }
 
-.g4 {
+.g4 { /* Сетка из 4 колонок */
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-    padding: 0
+    padding: 0;
 }
 
+/* Карточка */
 .card {
     position: relative;
     overflow: hidden;
     background: var(--pn);
     border: 1px solid var(--ln);
-    padding: 22px
+    padding: 22px;
 }
 
 .card:hover {
-    border-color: var(--or)
+    border-color: var(--or); /* Бордер при наведении */
 }
 
-.card>*:not(.bg) {
-    position: relative
+.card>*:not(.bg) { /* Для контента внутри карточки */
+    position: relative;
 }
 
 .card h3 {
     font-size: 18px;
-    margin-bottom: 6px
+    margin-bottom: 6px;
 }
 
 .card p {
     color: var(--mute);
-    font-size: 15px
+    font-size: 15px;
 }
 
+/* Карточка с изображением и текстом */
 .st .card {
     display: grid;
-    grid-template-columns: 130px 1fr;
+    grid-template-columns: 130px 1fr; /* Две колонки */
     gap: 20px;
-    align-items: center
+    align-items: center;
 }
 
+/* Блок для изображения (фото) */
 .ph {
-    aspect-ratio: 3/4;
-    background: repeating-linear-gradient(135deg, #171717 0 10px, #1c1c1c 10px 20px);
+    aspect-ratio: 3/4; /* Соотношение сторон */
+    background: repeating-linear-gradient(135deg, #171717 0 10px, #1c1c1c 10px 20px); /* Градиентный фон */
     border: 1px solid var(--ln);
     display: grid;
     place-items: center;
-    overflow: hidden
+    overflow: hidden;
 }
 
 .ph img {
     width: 100%;
     height: 100%;
-    object-fit: cover
+    object-fit: cover; /* Масштабирование изображения */
 }
 
-.ph span {
+.ph span { /* Текст внутри блока фото */
     font: 500 13px Oswald, sans-serif;
     letter-spacing: .2em;
     color: #5a5a5a;
-    writing-mode: vertical-rl
+    writing-mode: vertical-rl; /* Вертикальный текст */
 }
 
-.pos {
+.pos { /* Позиция */
     color: var(--or) !important;
     font-size: 14px !important;
-    margin-bottom: 14px
+    margin-bottom: 14px;
 }
 
+/* Двухколоночная сетка */
 .two {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px
+    gap: 40px;
 }
 
+/* Список требований */
 ul.req {
     list-style: none;
-    padding: 0
+    padding: 0;
 }
 
 ul.req li {
     padding: 12px 0 12px 22px;
     border-bottom: 1px solid var(--ln);
-    position: relative
+    position: relative;
 }
 
-ul.req li:before {
+ul.req li:before { /* Маркер списка */
     content: "";
     position: absolute;
     left: 0;
     top: 21px;
     width: 8px;
     height: 2px;
-    background: var(--or)
+    background: var(--or);
 }
 
+/* Секция с шагами */
 .steps {
     list-style: none;
     padding: 0;
-    position: relative
+    position: relative;
 }
 
-.steps:before {
+.steps:before { /* Вертикальная линия для шагов */
     content: "";
     position: absolute;
     left: 17px;
@@ -379,13 +407,13 @@ ul.req li:before {
     bottom: 10px;
     width: 1px;
     background: var(--or);
-    transform: scaleY(0);
+    transform: scaleY(0); /* Начальное состояние */
     transform-origin: top;
-    transition: transform 1.6s
+    transition: transform 1.6s;
 }
 
-.steps.in:before {
-    transform: none
+.steps.in:before { /* Линия при появлении */
+    transform: none;
 }
 
 .steps li {
@@ -393,10 +421,10 @@ ul.req li:before {
     gap: 16px;
     padding: 10px 0;
     align-items: center;
-    position: relative
+    position: relative;
 }
 
-.steps i {
+.steps i { /* Цифра шага */
     flex: none;
     width: 36px;
     height: 36px;
@@ -406,71 +434,70 @@ ul.req li:before {
     place-items: center;
     font: 600 15px Oswald, sans-serif;
     font-style: normal;
-    color: var(--or)
+    color: var(--or);
 }
 
+/* Призыв к действию */
 .cta {
     text-align: center;
-    padding: 20px 0 60px
+    padding: 20px 0 60px;
 }
 
+/* Футер */
 footer {
     border-top: 1px solid var(--ln);
     padding: 28px 0;
     font-size: 13px;
     color: var(--mute);
-    background: var(--pn)
+    background: var(--pn);
 }
 
+/* Анимация появления элементов */
 .rv {
     opacity: 0;
     transform: translateY(28px);
-    transition: opacity .8s calc(var(--i, 0)*.09s), transform .8s calc(var(--i, 0)*.09s)
+    transition: opacity .8s calc(var(--i, 0)*.09s), transform .8s calc(var(--i, 0)*.09s); /* --i - индекс элемента */
 }
 
-.rv.in {
+.rv.in { /* Появление элемента */
     opacity: 1;
-    transform: none
+    transform: none;
 }
 
+/* Модальное окно (пример) */
 .md {
     position: fixed;
     inset: 0;
-    background: #000d;
+    background: #000d; /* Полупрозрачный фон */
     display: grid;
     place-items: center;
     z-index: 50;
     padding: 16px;
-    animation: fa .25s
+    animation: fa .25s; /* Анимация появления */
 }
 
 @keyframes fa {
-    from {
-        opacity: 0
-    }
+    from { opacity: 0; }
 }
 
-.mb {
+.mb { /* Контент модального окна */
     background: var(--pn);
     border: 1px solid var(--ln);
     border-top: 3px solid var(--or);
     max-width: 580px;
     width: 100%;
     max-height: 90vh;
-    overflow: auto;
+    overflow: auto; /* Прокрутка при необходимости */
     padding: 28px;
     position: relative;
-    animation: mu .3s
+    animation: mu .3s; /* Анимация */
 }
 
 @keyframes mu {
-    from {
-        opacity: 0;
-        transform: translateY(20px)
-    }
+    from { opacity: 0; transform: translateY(20px); }
 }
 
-.x {
+.x { /* Кнопка закрытия */
     position: absolute;
     right: 12px;
     top: 8px;
@@ -478,146 +505,139 @@ footer {
     border: 0;
     color: var(--mute);
     font-size: 28px;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .x:hover {
-    color: var(--or)
+    color: var(--or);
 }
 
+/* Детализация (например, в модальном окне) */
 .dt {
     display: grid;
     grid-template-columns: 140px 1fr;
     gap: 22px;
-    margin-bottom: 18px
+    margin-bottom: 18px;
 }
 
 .dt h2 {
     font-size: 22px;
-    margin-bottom: 6px
+    margin-bottom: 6px;
 }
 
 .dt p {
     font-size: 15px;
-    margin-bottom: 6px
+    margin-bottom: 6px;
 }
 
+/* Цитаты */
 blockquote {
     border-left: 3px solid var(--or);
     padding: 6px 0 6px 16px;
     margin: 0 0 20px;
-    font-style: italic
+    font-style: italic;
 }
 
 blockquote cite {
     display: block;
     margin-top: 8px;
     font-size: 13px;
-    color: var(--mute)
+    color: var(--mute);
 }
 
+/* Блок с артефактами/новостями (пример) */
 .aw {
     text-align: center;
     padding: 16px 0;
-    border-bottom: 1px solid var(--ln)
+    border-bottom: 1px solid var(--ln);
 }
 
 .aw:last-child {
-    border: 0
+    border: 0;
 }
 
-.aw svg,
-.aw img {
+.aw svg, .aw img {
     width: 90px;
     height: 120px;
     object-fit: contain;
-    margin-bottom: 10px
+    margin-bottom: 10px;
 }
 
 .aw time {
     display: block;
     color: var(--or);
     font-size: 13px;
-    margin: 6px 0 10px
+    margin: 6px 0 10px;
 }
 
 .aw p {
     color: var(--mute);
-    font-size: 15px
+    font-size: 15px;
 }
 
+/* Медиа-запросы для адаптивности */
 @media(max-width:800px) {
     #burger {
-        display: block
+        display: block; /* Показываем бургер */
     }
 
     nav {
-        display: none;
+        display: none; /* Скрываем навигацию */
         position: absolute;
-        top: 75px;
+        top: 75px; /* Позиция под шапкой */
         left: 0;
         right: 0;
-        background: var(--bg);
+        background: var(--bg); /* Фон меню */
         flex-direction: column;
         padding: 10px 20px;
-        border-bottom: 1px solid var(--ln)
+        border-bottom: 1px solid var(--ln);
     }
 
     nav.open {
-        display: flex
+        display: flex; /* Показываем меню при клике на бургер */
     }
 
-    .two {
-        grid-template-columns: 1fr
+    .two { /* Одноколоночная сетка для .two */
+        grid-template-columns: 1fr;
     }
 
     .top h1 {
-        font-size: 34px
+        font-size: 34px;
     }
 
-    .st .card {
-        grid-template-columns: 100px 1fr
+    .st .card { /* Изменение сетки карточек */
+        grid-template-columns: 100px 1fr;
     }
 
-    .dt {
-        grid-template-columns: 100px 1fr
+    .dt { /* Изменение сетки деталей */
+        grid-template-columns: 100px 1fr;
     }
 }
 
+/* Уменьшение анимаций при пониженном предпочтении движения */
 @media(prefers-reduced-motion:reduce) {
-
-    .rv,
-    .hero h1 span,
-    .hero .btn {
+    .rv, .hero h1 span, .hero .btn, .bg *, .steps:before {
         opacity: 1;
         transform: none;
         animation: none;
-        transition: none
-    }
-
-    .bg * {
+        transition: none;
         stroke-dashoffset: 0;
-        transition: none
-    }
-
-    .steps:before {
-        transform: none;
-        transition: none
     }
 }
 
-.ah {
+/* Дополнительные классы */
+.ah { /* Заголовок */
     font-size: 22px;
-    margin: 0 0 18px
+    margin: 0 0 18px;
 }
 
-.ag {
+.ag { /* Сетка с меньшими элементами */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 12px
+    gap: 12px;
 }
 
-.at {
+.at { /* Элемент в сетке .ag */
     background: var(--bg);
     border: 1px solid var(--ln);
     color: var(--ink);
@@ -630,27 +650,9 @@ blockquote cite {
     font: 500 12px/1.3 Oswald, sans-serif;
     letter-spacing: .06em;
     text-transform: uppercase;
-    transition: .2s
+    transition: .2s;
 }
 
 .at:hover {
-    border-color: var(--or)
-}
-
-.at svg,
-.at img {
-    width: 50px;
-    height: 66px;
-    object-fit: contain
-}
-
-.bk {
-    background: none;
-    border: 0;
-    color: var(--or);
-    cursor: pointer;
-    font: 500 13px Oswald, sans-serif;
-    letter-spacing: .08em;
-    margin-bottom: 6px;
-    text-transform: uppercase
+    border-color: var(--or); /* Цвет границы при наведении */
 }
