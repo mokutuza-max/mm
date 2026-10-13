@@ -23,6 +23,7 @@ const STAFF = [
     photo: "img/zamminister.png",
     rank: "Полковник",
     since: "21 сентября 2026 года",
+    quote: "",
     bg: "radar",
     awards: [],
   },
@@ -30,8 +31,9 @@ const STAFF = [
     pos: "Пресс-секретарь министра обороны Кутузовского Федерального округа",
     name: "Брагин Александр Сергеевич",
     photo: "",
-    rank: "Старший референт министерства обороны",
-    since: "11 октября 2026 года",
+    rank: "",
+    since: "xx месяц год",
+    quote: "",
     bg: "mic",
     awards: [],
   },
@@ -41,6 +43,7 @@ const STAFF = [
     photo: "",
     rank: "",
     since: "",
+    quote: "",
     bg: "cam",
     awards: [],
   },
@@ -50,6 +53,7 @@ const STAFF = [
     photo: "",
     rank: "",
     since: "",
+    quote: "",
     bg: "chat",
     awards: [],
   },
@@ -117,7 +121,7 @@ addEventListener("keydown", (e) => {
     a.length && closeM(a[a.length - 1]);
   }
 });
-cconst ph = (s) =>
+const ph = (s) =>
   s.photo ? `<img src="${s.photo}" alt="${s.name}">` : "<span>ВАКАНТНО</span>";
 const medal = `<svg viewBox="0 0 100 130" fill="none" stroke="#ff8a1f" stroke-width="2"><path d="M30 0h40l-9 52H39zM50 52v6"/><circle cx="50" cy="88" r="34"/><circle cx="50" cy="88" r="27"/><polygon points="${star(50, 88, 20, 8)}"/></svg>`;
 const awards = (s) => {
