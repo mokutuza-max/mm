@@ -1,62 +1,36 @@
 
-// Получаем элементы DOM
-const burgerIcon = document.getElementById('burger');
-const navMenu = document.querySelector('nav');
-const animatedElements = document.querySelectorAll('.rv');
-const heroTitleSpans = document.querySelectorAll('.hero h1 span');
-const heroButton = document.querySelector('.hero .btn');
+// Этот файл является примером.
+// Вы можете добавить сюда JavaScript-код для интерактивности,
+// анимаций, валидации форм и т.д.
 
-// Обработчик для кнопки-бургера
-if (burgerIcon && navMenu) {
-    burgerIcon.addEventListener('click', () => {
-        navMenu.classList.toggle('open'); // Переключаем класс 'open' для показа/скрытия меню
-    });
-}
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Сайт загружен!');
 
-// Функция для запуска анимации появления элементов
-function animateElements() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in'); // Добавляем класс 'in' для анимации
-                // Если это элемент заголовка, запускаем анимацию букв
-                if (entry.target.classList.contains('hero')) {
-                    heroTitleSpans.forEach((span, index) => {
-                        span.style.setProperty('--d', `${index * 0.09}s`); // Устанавливаем задержку для каждой буквы
-                        span.style.animation = 'up .8s forwards'; // Применяем анимацию
-                    });
-                    // Анимируем кнопку после заголовка
-                    if (heroButton) {
-                        heroButton.style.animation = 'up .8s 1s forwards';
-                    }
-                }
+    // Пример: плавный скроллинг к якорям
+    const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+    smoothScrollLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
         });
-    }, { threshold: 0.5 }); // Запускаем анимацию, когда элемент на 50% виден
-
-    // Добавляем элементы для наблюдения
-    animatedElements.forEach(el => observer.observe(el));
-    if (document.querySelector('.hero')) {
-        observer.observe(document.querySelector('.hero'));
-    }
-}
-
-// Запуск анимации при загрузке страницы
-document.addEventListener('DOMContentLoaded', animateElements);
-
-// Пример: если нужно, чтобы при нажатии на закрывающий крестик модального окна оно скрывалось
-const closeButton = document.querySelector('.md .x');
-const modalWindow = document.querySelector('.md');
-
-if (closeButton && modalWindow) {
-    closeButton.addEventListener('click', () => {
-        modalWindow.style.display = 'none'; // Скрываем модальное окно
     });
 
-    // Также можно закрыть, кликнув по фону
-    modalWindow.addEventListener('click', (event) => {
-        if (event.target === modalWindow) {
-            modalWindow.style.display = 'none';
+    // Пример: добавление класса к активному пункту меню (если нужно)
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+        if (link.href === window.location.href) {
+            link.classList.add('active');
         }
     });
-}
+
+    // Здесь могут быть другие скрипты, например, для открытия/закрытия модальных окон,
+    // слайдеров, анимаций при прокрутке и т.д.
+});
+
