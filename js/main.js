@@ -117,11 +117,15 @@ addEventListener("keydown", (e) => {
     a.length && closeM(a[a.length - 1]);
   }
 });
-const ph = (s) =>
-  s.photo ? `<img src="${s.photo}" alt="${s.name}">` : "<span>ВАКАНТНО</span>";
-const medal = `<svg viewBox="0 0 100 130" fill="none" stroke="#ff8a1f" stroke-width="2"><path d="M30 0h40l-9 52H39zM50 52v6"/><circle cx="50" cy="88" r="34"/><circle cx="50" cy="88" r="27"/><polygon points="${star(50, 88, 20, 8)}"/></svg>`;
-const awards = (s) => {
-  const m = openM(""),
+const info = (i) => {
+  const s = STAFF[i],
+    n = s.name || "Вакантно";
+  const m = openM(
+    `<div class="dt"><div class="ph">${ph(s)}</div><div><h2>${n}</h2><p class="pos">${s.pos}</p>${s.rank ? `<p><b>Воинское звание:</b> \${s.rank}</p>` : ""}<p><b>На посту с:</b> ${s.since || "—"}</p></div></div>${s.quote ? `<blockquote>«\${s.quote}»<cite>— n, {s.pos}</cite></blockquote>` : (s.name ? '' : '<p style="color:var(--mute);margin-bottom:16px">Должность вакантна.</p>')}${s.awards.length ? `<button class="btn" id="aw">Награды (\${s.awards.length})</button>` : ""}`,
+  );
+  const b = m.querySelector("#aw");
+  if (b) b.onclick = () => awards(s);
+};
     b = m.querySelector(".mb"),
     X = m.querySelector(".x").outerHTML,
     N = s.awards.length;
