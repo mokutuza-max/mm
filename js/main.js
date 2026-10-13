@@ -122,7 +122,6 @@ cconst ph = (s) =>
 const medal = `<svg viewBox="0 0 100 130" fill="none" stroke="#ff8a1f" stroke-width="2"><path d="M30 0h40l-9 52H39zM50 52v6"/><circle cx="50" cy="88" r="34"/><circle cx="50" cy="88" r="27"/><polygon points="${star(50, 88, 20, 8)}"/></svg>`;
 const awards = (s) => {
   const m = openM(""),
-};
     b = m.querySelector(".mb"),
     X = m.querySelector(".x").outerHTML,
     N = s.awards.length;
