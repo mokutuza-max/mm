@@ -30,7 +30,7 @@ const STAFF = [
   {
     pos: "Пресс-секретарь министра обороны Кутузовского Федерального округа",
     name: "Брагин Александр Евгеньевич",
-    photo: "geekbot_ru_1791909611217.png",
+    photo: "https://fotora.ru/uploaded/?ID=WAQIW13102026165718",
     rank: "",
     since: "11 октября 2026 года",
     quote: "",
