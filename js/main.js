@@ -7,7 +7,7 @@ const STAFF = [
     rank: "Генерал-майор",
     since: "17 сентября 2026 года",
     quote: "Уважаемые жители Кутузовского федерального округа, военнослужащие и ветераны! Министерство обороны округа стоит на страже мира и безопасности нашей земли. Мы последовательно укрепляем боеготовность частей, модернизируем технику и вооружение, заботимся о каждом военнослужащем и его семье. Наша сила — в людях. Поэтому особое внимание уделяем подготовке кадров, социальным гарантиям, жилищному обеспечению и открытому диалогу с гражданами. Каждое обращение будет рассмотрено.",
-    bg: "general",
+    bg: "star",
     awards: [
       {
         n: "Орден Мужества",
@@ -54,6 +54,16 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
+    bg: "cam",
+    awards: [],
+  },
+  {
+    pos: "Старший референт министерства обороны Кутузовского Федерального округа",
+    name: "",
+    photo: "",
+    rank: "",
+    since: "",
+    quote: "",
     bg: "chat",
     awards: [],
   },
@@ -64,17 +74,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "digital-camo",
-    awards: [],
-  },
-  {
-    pos: "Старший референт министерства обороны Кутузовского Федерального округа",
-    name: "",
-    photo: "",
-    rank: "",
-    since: "",
-    quote: "",
-    bg: "grid",
+    bg: "chat",
     awards: [],
   },
   {
@@ -84,7 +84,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "camo",
+    bg: "chat",
     awards: [],
   },
   {
@@ -94,7 +94,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "camo",
+    bg: "chat",
     awards: [],
   },
   {
@@ -104,7 +104,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "camo",
+    bg: "chat",
     awards: [],
   },
   {
@@ -114,7 +114,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "camo",
+    bg: "chat",
     awards: [],
   },
   {
@@ -124,7 +124,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "camo",
+    bg: "chat",
     awards: [],
   },
   {
@@ -134,7 +134,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "camo",
+    bg: "chat",
     awards: [],
   },
   {
@@ -144,7 +144,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "camo",
+    bg: "chat",
     awards: [],
   },
 ];
