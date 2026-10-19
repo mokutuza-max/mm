@@ -74,7 +74,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "digital-camo",
+    bg: "grid",
     awards: [],
   },
   {
