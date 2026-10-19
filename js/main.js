@@ -57,6 +57,17 @@ const STAFF = [
     bg: "chat",
     awards: [],
   },
+  {
+    pos: "Заместитель руководителя пресс-службы министерства обороны Кутузовского Федерального округа",
+    name: "",
+    photo: "",
+    rank: "",
+    since: "",
+    quote: "",
+    bg: "SweepAngle",
+    awards: [],
+  },
+  },
 ];
 const star = (cx, cy, R, r) =>
   Array.from({ length: 10 }, (_, i) => {
