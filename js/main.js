@@ -64,7 +64,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "SweepAngle",
+    bg: "digital-camo",
     awards: [],
   },
   {
@@ -74,7 +74,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "SweepAngle",
+    bg: "digital-camo",
     awards: [],
   },
   {
@@ -84,7 +84,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "SweepAngle",
+    bg: "camo",
     awards: [],
   },
   {
@@ -94,7 +94,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "SweepAngle",
+    bg: "camo",
     awards: [],
   },
   {
@@ -104,7 +104,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "SweepAngle",
+    bg: "camo",
     awards: [],
   },
   {
@@ -114,7 +114,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "SweepAngle",
+    bg: "camo",
     awards: [],
   },
   {
@@ -124,7 +124,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "SweepAngle",
+    bg: "camo",
     awards: [],
   },
   {
@@ -134,7 +134,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "SweepAngle",
+    bg: "camo",
     awards: [],
   },
   {
@@ -144,7 +144,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "Angel",
+    bg: "camo",
     awards: [],
   },
 ];
