@@ -19,10 +19,10 @@ const STAFF = [
   },
   {
     pos: "Заместитель министра обороны Кутузовского Федерального округа",
-    name: "Гоголь Максим Максимович",
-    photo: "img/zamminister.png",
+    name: "Брагин Александр Евгеньевич",
+    photo: "img/zaminister.png",
     rank: "Полковник",
-    since: "21 сентября 2026 года",
+    since: "17 октября 2026 года",
     quote: "",
     bg: "radar",
     awards: [],
