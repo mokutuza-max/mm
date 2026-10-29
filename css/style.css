@@ -268,8 +268,14 @@ section.s {
 .grid {
     display: grid;
     gap: 18px;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 580px), 1fr));
-    padding: 40px 0
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+    padding: 40px 0;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
 }
 
 .g4 {
@@ -294,20 +300,23 @@ section.s {
 }
 
 .card h3 {
-    font-size: 18px;
-    margin-bottom: 6px
+    font-size: 38px;
+    line-height: 1.1;
+    margin-bottom: 12px;
 }
 
 .card p {
     color: var(--mute);
-    font-size: 15px
+    font-size: 20px;
+    line-height: 1.4;
 }
 
 .st .card {
     display: grid;
-    grid-template-columns: 340px 1fr;
+    grid-template-columns: 400px 1fr;
     gap: 40px;
-    align-items: center
+    align-items: center;
+    padding: 40px 60px;
 }
 
 .ph {
