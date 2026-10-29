@@ -205,9 +205,14 @@ if (ST) {
   toggleBtn.onclick = () => {
     const isOpen = content.classList.toggle("open");
     toggleBtn.classList.toggle("active");
-
-        // Динамически рассчитываем высоту содержимого для плавной анимации
-        content.style.maxHeight = isOpen ? content.scrollHeight + "px" : "0px";
+    
+    if (isOpen) {
+        // При открытии выкатываем блок на всю высоту содержимого
+        content.style.maxHeight = content.scrollHeight + "px";
+    } else {
+        // При закрытии принудительно забираем все плашки обратно в 0
+        content.style.maxHeight = "0px";
+    }
   };
 }
 // фоновые векторные линии
