@@ -18,28 +18,18 @@ const STAFF = [
     ],
   },
   {
-    pos: "1-й Заместитель министра обороны Кутузовского Федерального округа",
-    name: "Брагин Александр Евгеньевич",
-    photo: "img/zaminister.png",
-    rank: "Полковник",
-    since: "17 октября 2026 года",
-    quote: "",
-    bg: "radar",
-    awards: [],
-  },
-  {
     pos: "Заместитель министра обороны Кутузовского Федерального округа",
-    name: "Невский Альфредо Максимович",
-    photo: "img/zam.png",
+    name: "Гоголь Максим Максимович",
+    photo: "img/zamminister.png",
     rank: "Полковник",
-    since: "29 октября 2026 года",
+    since: "21 сентября 2026 года",
     quote: "",
     bg: "radar",
     awards: [],
   },
   {
     pos: "Пресс-секретарь министра обороны Кутузовского Федерального округа",
-    name: "",
+    name: "Брагин Александр Сергеевич",
     photo: "",
     rank: "",
     since: "xx месяц год",
@@ -64,7 +54,7 @@ const STAFF = [
     rank: "",
     since: "",
     quote: "",
-    bg: "cam",
+    bg: "chat",
     awards: [],
   },
 ];
@@ -175,10 +165,9 @@ if (ST) {
       `<article class="card rv" data-bg="${s.bg}"><div class="ph">${ph(s)}</div><div><h3>${s.name || "Вакантно"}</h3><p class="pos">${s.pos}</p><button class="btn sm" data-i="${i}">Подробнее</button></div></article>`,
   ).join("");
   ST.onclick = (e) => {
-  const b = e.target.closest("[data-i]");
-  if (b) info(+b.dataset.i);
-};
-};
+    const b = e.target.closest("[data-i]");
+    if (b) info(+b.dataset.i);
+  };
 }
 // фоновые векторные линии
 $$("[data-bg]").forEach((el) => {
