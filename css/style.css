@@ -305,15 +305,16 @@ section.s {
 
 .st .card {
     display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 20px;
+    grid-template-columns: 340px 1fr;
+    gap: 40px;
     align-items: center
 }
 
 .ph {
-    aspect-ratio: 2/3;
+    width: 100%;
+    height: 410px;
     background: repeating-linear-gradient(135deg, #171717 0 10px, #1c1c1c 10px 20px);
-    border: 1px solid var(--ln);
+    border: 2px solid var(--or);
     display: grid;
     place-items: center;
     overflow: hidden
