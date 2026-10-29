@@ -170,13 +170,44 @@ const info = (i) => {
 };
 const ST = $("#staff");
 if (ST) {
-  ST.innerHTML = STAFF.map(
-    (s, i) =>
-      `<article class="card rv" data-bg="${s.bg}"><div class="ph">${ph(s)}</div><div><h3>${s.name || "Вакантно"}</h3><p class="pos">${s.pos}</p><button class="btn sm" data-i="${i}">Подробнее</button></div></article>`,
-  ).join("");
+    // Формируем структуру: кликабельная шапка-кнопка и скрытый контейнер
+    ST.innerHTML = `
+    <div class="spoiler-wrapper">
+      <button class="spoiler-btn" type="button">
+        Руководящий состав Министерства Обороны Кутузовского Федерального округа
+        <span class="spoiler-arrow">▼</span>
+      </button>
+      <div class="spoiler-content">
+        <div class="grid st">
+          ${STAFF.slice(0, 3).map((s, i) => `
+            <article class="card rv" data-bg="${s.bg}">
+              <div class="ph">${ph(s)}</div>
+              <div>
+                <h3>${s.name || "Вакантно"}</h3>
+                <p class="pos">${s.pos}</p>
+                <button class="btn sm" data-i="${i}">Подробнее</button>
+              </div>
+            </article>
+          `).join("")}
+        </div>
+      </div>
+    </div>
+  `;
+    // Обработчик клика для открытия модального окна "Подробнее"
   ST.onclick = (e) => {
     const b = e.target.closest("[data-i]");
     if (b) info(+b.dataset.i);
+  };
+  // Логика плавного раскрытия и закрытия плашки
+  const toggleBtn = ST.querySelector(".spoiler-btn");
+  const content = ST.querySelector(".spoiler-content");
+  
+  toggleBtn.onclick = () => {
+    const isOpen = content.classList.toggle("open");
+    toggleBtn.classList.toggle("active");
+
+        // Динамически рассчитываем высоту содержимого для плавной анимации
+        content.style.maxHeight = isOpen ? content.scrollHeight + "px" : "0px";
   };
 }
 // фоновые векторные линии
