@@ -282,7 +282,7 @@ section.s {
     overflow: hidden;
     background: var(--pn);
     border: 1px solid var(--ln);
-    padding: 22px
+    padding: 30px
 }
 
 .card:hover {
@@ -305,7 +305,7 @@ section.s {
 
 .st .card {
     display: grid;
-    grid-template-columns: 130px 1fr;
+    grid-template-columns: 180px 1fr;
     gap: 20px;
     align-items: center
 }
@@ -546,7 +546,7 @@ blockquote cite {
     font-size: 15px
 }
 
-@media(max-width:800px) {
+@media(max-width:900px) {
     #burger {
         display: block
     }
@@ -576,7 +576,7 @@ blockquote cite {
     }
 
     .st .card {
-        grid-template-columns: 100px 1fr
+        grid-template-columns: 140px 1fr
     }
 
     .dt {
