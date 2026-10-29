@@ -314,16 +314,13 @@ section.s {
 .st .card {
     display: grid;
     grid-template-columns: 400px 1fr;
-    gap: 50px;
+    gap: 40px;
     align-items: center;
-    min-height: 550px;
-    padding: 60px 80px;
 }
 
 .ph {
     width: 100%;
-    height: 480px;
-    aspect-ratio: auto;
+    height: 410px;
     background: repeating-linear-gradient(135deg, #171717 0 10px, #1c1c1c 10px 20px);
     border: 2px solid var(--or);
     box-shadow: 0 0 20px rgba(255, 130,  31, 0.3);
