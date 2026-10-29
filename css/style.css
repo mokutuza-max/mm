@@ -4,7 +4,7 @@
     --bg: #0a0a0a;
     --pn: #141414;
     --ln: #272727;
-    --or: #ff8a1f;
+    --or: #555845;
     --ink: #ececec;
     --mute: #8f8f8f
 }
@@ -214,7 +214,7 @@ nav a.on {
 }
 
 .btn:hover {
-    background: #ffa047
+    background: #6a6e57
 }
 
 .btn.sm {
