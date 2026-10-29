@@ -174,6 +174,10 @@ if (ST) {
     (s, i) =>
       `<article class="card rv" data-bg="${s.bg}"><div class="ph">${ph(s)}</div><div><h3>${s.name || "Вакантно"}</h3><p class="pos">${s.pos}</p><button class="btn sm" data-i="${i}">Подробнее</button></div></article>`,
   ).join("");
+  ST.onclick = (e) => {
+  const b = e.target.closest("[data-i]");
+  if (b) info(+b.dataset.i);
+};
 }
 // фоновые векторные линии
 $$("[data-bg]").forEach((el) => {
