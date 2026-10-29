@@ -323,6 +323,7 @@ section.s {
 .ph {
     width: 100%;
     height: 480px;
+    aspect-ratio: auto;
     background: repeating-linear-gradient(135deg, #171717 0 10px, #1c1c1c 10px 20px);
     border: 2px solid var(--or);
     box-shadow: 0 0 20px rgba(255, 130,  31, 0.3);
