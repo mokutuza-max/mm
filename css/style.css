@@ -270,12 +270,6 @@ section.s {
     gap: 18px;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
     padding: 40px 0;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
 }
 
 .g4 {
@@ -316,6 +310,7 @@ section.s {
     grid-template-columns: 400px 1fr;
     gap: 40px;
     align-items: center;
+    padding: 40px 60px;
 }
 
 .ph {
