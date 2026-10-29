@@ -661,3 +661,63 @@ blockquote cite {
     margin-bottom: 6px;
     text-transform: uppercase
 }
+
+/* Контейнер плашки-аккордеона */
+.spoiler-wrapper {
+    background: var(--pn);
+    border: 1px solid var(--ln);
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+/* Стили кнопки-шапки */
+.spoiler-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--ink);
+    padding: 22px 30px;
+    font-family: Oswald, Impact, sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: .03em;
+    transition: background 0.2s, color 0.2s;
+}
+
+.spoiler-btn:hover {
+    background: rgba(255, 138, 31, 0.05);
+    color: var(--or);
+}
+
+.spoiler-btn.active {
+    border-bottom: 1px solid var(--ln);
+}
+
+/* Анимированная стрелочка */
+.spoiler-arrow {
+    font-size: 13px;
+    color: var(--mute);
+    transition: transform 0.3s ease;
+}
+
+.spoiler-btn.active .spoiler-arrow {
+    transform: rotate(180deg);
+    color: var(--or);
+}
+
+/* Скрытый контент с плавной анимацией */
+.spoiler-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+/* Отступы сетки внутри раскрытой плашки */
+.spoiler-content .grid {
+    padding: 30px;
+}
