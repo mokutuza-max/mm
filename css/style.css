@@ -294,14 +294,14 @@ section.s {
 }
 
 .card h3 {
-    font-size: 38px;
+    font-size: 24px;
     line-height: 1.1;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
 }
 
 .card p {
     color: var(--mute);
-    font-size: 20px;
+    font-size: 15px;
     line-height: 1.4;
 }
 
@@ -315,7 +315,7 @@ section.s {
 
 .ph {
     width: 100%;
-    height: 410px;
+    height: 340px;
     background: repeating-linear-gradient(135deg, #171717 0 10px, #1c1c1c 10px 20px);
     border: 2px solid var(--or);
     box-shadow: 0 0 20px rgba(255, 130,  31, 0.3);
@@ -326,7 +326,7 @@ section.s {
 
 .ph img {
     width: 100%;
-    height: 480px;
+    height: 100%;
     object-fit: cover
 }
 
