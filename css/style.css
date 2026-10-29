@@ -269,7 +269,7 @@ section.s {
     display: grid;
     gap: 18px;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
-    padding: 40px 0;
+    padding: 40px 0
 }
 
 .g4 {
@@ -282,7 +282,7 @@ section.s {
     overflow: hidden;
     background: var(--pn);
     border: 1px solid var(--ln);
-    padding: 40px 30px;
+    padding: 22px
 }
 
 .card:hover {
@@ -294,31 +294,26 @@ section.s {
 }
 
 .card h3 {
-    font-size: 24px;
-    line-height: 1.1;
-    margin-bottom: 6px;
+    font-size: 18px;
+    margin-bottom: 6px
 }
 
 .card p {
     color: var(--mute);
-    font-size: 15px;
-    line-height: 1.4;
+    font-size: 15px
 }
 
 .st .card {
     display: grid;
-    grid-template-columns: 400px 1fr;
-    gap: 40px;
-    align-items: center;
-    padding: 40px 60px;
+    grid-template-columns: 130px 1fr;
+    gap: 20px;
+    align-items: center
 }
 
 .ph {
-    width: 100%;
-    height: 340px;
+    aspect-ratio: 3/4;
     background: repeating-linear-gradient(135deg, #171717 0 10px, #1c1c1c 10px 20px);
-    border: 2px solid var(--or);
-    box-shadow: 0 0 20px rgba(255, 130,  31, 0.3);
+    border: 1px solid var(--ln);
     display: grid;
     place-items: center;
     overflow: hidden
@@ -581,8 +576,7 @@ blockquote cite {
     }
 
     .st .card {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: 100px 1fr
     }
 
     .dt {
