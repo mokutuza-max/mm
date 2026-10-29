@@ -664,17 +664,19 @@ blockquote cite {
 
 /* Контейнер плашки-аккордеона */
 .spoiler-wrapper {
-    background: var(--pn);
-    border: 1px solid var(--ln);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     margin: 20px 0;
-    overflow: hidden;
 }
 
 /* Стили кнопки-шапки */
 .spoiler-btn {
     width: 100%;
-    background: none;
-    border: none;
+    max-width: 1120px;
+    background: var(--pn);
+    border: 1px solid var(--ln);
     color: var(--ink);
     padding: 22px 30px;
     font-family: Oswald, Impact, sans-serif;
@@ -686,16 +688,16 @@ blockquote cite {
     justify-content: space-between;
     align-items: center;
     letter-spacing: .03em;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .spoiler-btn:hover {
-    background: rgba(255, 138, 31, 0.05);
-    color: var(--or);
+    background: var(--ln);
+    border-color: var(--or);
 }
 
 .spoiler-btn.active {
-    border-bottom: 1px solid var(--ln);
+    border-bottom: 1px solid var(--or);
 }
 
 /* Анимированная стрелочка */
@@ -712,12 +714,14 @@ blockquote cite {
 
 /* Скрытый контент с плавной анимацией */
 .spoiler-content {
+    width: 100%;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-out;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
 }
 
 /* Отступы сетки внутри раскрытой плашки */
-.spoiler-content .grid {
-    padding: 30px;
+.spoiler-content .open {
+    max-height: 2000px; /* Запас высоты для выкатывания */
+    transition: max-height 0.8s ease-in-out;
 }
