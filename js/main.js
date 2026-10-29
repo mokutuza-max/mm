@@ -245,7 +245,30 @@ if (ST) {
         </div>
       </div>
     </div>
+
+        <!-- Третья плашка: Пресс-служба (Индексы 6, 7, 8) -->
+    <div class="spoiler-wrapper">
+      <button class="spoiler-btn" type="button" data-target="spoiler-press">
+        Пресс-служба министерства обороны Кутузовского федерального округа
+        <span class="spoiler-arrow">▼</span>
+      </button>
+      <div class="spoiler-content" id="spoiler-press">
+        <div class="grid st">
+          ${STAFF.slice(6, 9).map((s, i) => `
+            <article class="card rv" data-bg="${s.bg}">
+              <div class="ph">${ph(s)}</div>
+              <div>
+                <h3>${s.name || "Вакантно"}</h3>
+                <p class="pos">${s.pos}</p>
+                <button class="btn sm" data-i="${i + 6}">Подробнее</button>
+              </div>
+            </article>
+          `).join("")}
+        </div>
+      </div>
+    </div>
   `;
+  
   // Единый обработчик клика для открытия модального окна "Подробнее" (для обеих плашек)
   ST.onclick = (e) => {
     const b = e.target.closest("[data-i]");
