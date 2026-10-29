@@ -312,7 +312,7 @@ section.s {
 
 .ph {
     width: 100%;
-    height: 410px;
+    height: 320px;
     background: repeating-linear-gradient(135deg, #171717 0 10px, #1c1c1c 10px 20px);
     border: 2px solid var(--or);
     display: grid;
