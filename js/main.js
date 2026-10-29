@@ -20,7 +20,7 @@ const STAFF = [
   {
     pos: "1-й Заместитель министра обороны Кутузовского Федерального округа",
     name: "Брагин Александр Евгеньевич",
-    photo: "img/zamminister.png",
+    photo: "img/zaminister.png",
     rank: "Полковник",
     since: "17 октября 2026 года",
     quote: "",
