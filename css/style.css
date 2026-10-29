@@ -268,7 +268,7 @@ section.s {
 .grid {
     display: grid;
     gap: 18px;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 540px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 580px), 1fr));
     padding: 40px 0
 }
 
@@ -282,7 +282,7 @@ section.s {
     overflow: hidden;
     background: var(--pn);
     border: 1px solid var(--ln);
-    padding: 22px
+    padding: 30px
 }
 
 .card:hover {
@@ -305,7 +305,7 @@ section.s {
 
 .st .card {
     display: grid;
-    grid-template-columns: 160px 1fr;
+    grid-template-columns: 180px 1fr;
     gap: 20px;
     align-items: center
 }
@@ -576,7 +576,7 @@ blockquote cite {
     }
 
     .st .card {
-        grid-template-columns: 100px 1fr
+        grid-template-columns: 140px 1fr
     }
 
     .dt {
