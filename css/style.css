@@ -888,3 +888,8 @@ blockquote cite {
     pointer-events: none; /* Отключаем клики во время и после анимации */
     transition: opacity 0.4s ease-out;
 }
+
+/* Запуск прорисовки узора, когда блок .ph внутри модалки получает класс .in */
+.ph.in .bg * {
+    stroke-dashoffset: 0;
+}
