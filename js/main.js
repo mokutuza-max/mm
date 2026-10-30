@@ -336,50 +336,6 @@ if (ST) {
         </div>
       </div>
     </div>
-
-        <!-- Четвертая плашка: Старшие референты (Индексы 9, 10) -->
-    <div class="spoiler-wrapper">
-      <button class="spoiler-btn" type="button" data-target="spoiler-press">
-        Старшие референты министерства обороны Кутузовского федерального округа
-        <span class="spoiler-arrow">▼</span>
-      </button>
-      <div class="spoiler-content" id="spoiler-press">
-        <div class="grid st">
-          ${STAFF.slice(6, 9).map((s, i) => `
-            <article class="card rv" data-bg="${s.bg}">
-              <div class="ph">${ph(s)}</div>
-              <div>
-                <h3>${s.name || "Вакантно"}</h3>
-                <p class="pos">${s.pos}</p>
-                <button class="btn sm" data-i="${i + 8}">Подробнее</button>
-              </div>
-            </article>
-          `).join("")}
-        </div>
-      </div>
-    </div>
-
-        <!-- Пятая плашка: Референты (Индексы 11, 12, 13, 14, 15) -->
-    <div class="spoiler-wrapper">
-      <button class="spoiler-btn" type="button" data-target="spoiler-press">
-        Референты министерства обороны Кутузовского федерального округа
-        <span class="spoiler-arrow">▼</span>
-      </button>
-      <div class="spoiler-content" id="spoiler-press">
-        <div class="grid st">
-          ${STAFF.slice(6, 9).map((s, i) => `
-            <article class="card rv" data-bg="${s.bg}">
-              <div class="ph">${ph(s)}</div>
-              <div>
-                <h3>${s.name || "Вакантно"}</h3>
-                <p class="pos">${s.pos}</p>
-                <button class="btn sm" data-i="${i + 13}">Подробнее</button>
-              </div>
-            </article>
-          `).join("")}
-        </div>
-      </div>
-    </div>
   `;
   // Обработчик клика для кнопок "Подробнее"
   ST.onclick = (e) => {
