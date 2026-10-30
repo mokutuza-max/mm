@@ -783,35 +783,12 @@ blockquote cite {
 }
 
 /* ==========================================================================
-   СТИЛИ ДЛЯ СТРАНИЦЫ / ФОРМЫ РЕГИСТРАЦИИ (В СТИЛЕ МИНИСТЕРСТВА ОБОРОНЫ)
+   ИСПРАВЛЕННЫЕ СТИЛИ ДЛЯ ФОРМЫ АВТОРИЗАЦИИ
    ========================================================================== */
 
-/* Общая обертка экрана авторизации (если она открыта поверх страницы) */
-.auth-layout {
-    background: #000000f2 !important; /* Глубокий темный полупрозрачный фон */
-    display: grid;
-    place-items: center;
-    padding: 20px;
-}
-
-/* Контейнер самой формы авторизации */
+/* Ограничиваем ширину окна авторизации, чтобы оно не растягивалось */
 .auth-layout .mb {
-    max-width: 500px; /* Делаем окно аккуратным и не слишком широким */
-    width: 100%;
-    background: var(--pn); /* Внутренний фон карточек #141414 */
-    border: 1px solid var(--ln); /* Рамка #272727 */
-    border-top: 3px solid var(--or); /* Фирменная оливковая полоса сверху */
-    padding: 40px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-}
-
-/* Заголовок формы */
-.auth-layout .ah {
-    font-size: 28px;
-    color: var(--ink);
-    margin-bottom: 8px;
-    border-bottom: 1px solid var(--ln);
-    padding-bottom: 14px;
+    max-width: 500px;
 }
 
 /* Группы полей (Label + Input) */
@@ -820,6 +797,7 @@ blockquote cite {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    text-align: left;
 }
 
 /* Текст подписей к полям */
@@ -840,7 +818,13 @@ blockquote cite {
     padding: 12px 16px;
     font-family: 'PT Sans', Arial, sans-serif;
     font-size: 15px;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s;
+}
+
+/* Эффект при клике на поле ввода */
+.auth-fields input:focus {
+    outline: none;
+    border-color: var(--or); /* Оливковая подсветка */
 }
 
 /* Эффект при клике (фокусе) на поле ввода */
