@@ -454,3 +454,39 @@ socket.on('update-status', (usersOnlineList) => {
   });
   
 });
+
+// Логика авторизации с плавным затуханием (fade-out)
+const authForm = document.getElementById('auth-form');
+const authScreen = document.getElementById('auth-screen');
+
+if (authForm && authScreen) {
+  authForm.addEventListener('submit', (e) => {
+    // 1. Предотвращаем стандартную перезагрузку страницы браузером
+    e.preventDefault(); 
+    
+    // 2. Получаем данные из полей ввода
+    const userFio = document.getElementById('auth-name').value.trim();
+    const userEmail = document.getElementById('auth-email').value.trim();
+    
+    // 3. Сохраняем данные в браузер (чтобы сайт помнил пользователя)
+    localStorage.setItem('user_fio', userFio);
+    localStorage.setItem('user_email', userEmail);
+    
+    // 4. Добавляем класс плавного затухания
+    authScreen.classList.add('hide');
+    
+    // 5. После завершения анимации (через 400 мс) полностью удаляем блок из HTML
+    setTimeout(() => {
+      authScreen.remove();
+      // Возвращаем прокрутку страницы, если она была заблокирована
+      document.body.style.overflow = ""; 
+    }, 400);
+  });
+}
+
+// Проверка при загрузке страницы: если пользователь уже входил ранее, сразу убираем форму
+document.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('user_fio') && authScreen) {
+    authScreen.remove();
+  }
+});
