@@ -293,7 +293,7 @@ if (ST) {
       </div>
     </div>
 
-    <!-- Вторая плашка: Только Помощники (Индексы 3, 4, 5) -->
+    <!-- Вторая плашка: Помощники (Индексы 3, 4, 5) -->
     <div class="spoiler-wrapper">
       <button class="spoiler-btn" type="button" data-target="spoiler-helpers">
         Помощники министра обороны Кутузовского федерального округа
@@ -330,6 +330,50 @@ if (ST) {
                 <h3>${s.name || "Вакантно"}</h3>
                 <p class="pos">${s.pos}</p>
                 <button class="btn sm" data-i="${i + 6}">Подробнее</button>
+              </div>
+            </article>
+          `).join("")}
+        </div>
+      </div>
+    </div>
+
+    <!-- Четвертая плашка: Старшие референты (Индексы 9, 10) -->
+    <div class="spoiler-wrapper">
+      <button class="spoiler-btn" type="button" data-target="spoiler-sr-referents">
+        Старший референт министерства обороны Кутузовского федерального округа
+        <span class="spoiler-arrow">▼</span>
+      </button>
+      <div class="spoiler-content" id="spoiler-sr-referents">
+        <div class="grid st">
+          ${STAFF.slice(9, 11).map((s, i) => `
+            <article class="card rv" data-bg="${s.bg}">
+              <div class="ph">${ph(s)}</div>
+              <div>
+                <h3>${s.name || "Вакантно"}</h3>
+                <p class="pos">${s.pos}</p>
+                <button class="btn sm" data-i="${i + 9}">Подробнее</button>
+              </div>
+            </article>
+          `).join("")}
+        </div>
+      </div>
+    </div>
+
+    <!-- Пятая плашка: Обычные референты (Индексы 11-15) -->
+    <div class="spoiler-wrapper">
+      <button class="spoiler-btn" type="button" data-target="spoiler-referents">
+        Референт министерства обороны Кутузовского федерального округа
+        <span class="spoiler-arrow">▼</span>
+      </button>
+      <div class="spoiler-content" id="spoiler-referents">
+        <div class="grid st">
+          ${STAFF.slice(11, 16).map((s, i) => `
+            <article class="card rv" data-bg="${s.bg}">
+              <div class="ph">${ph(s)}</div>
+              <div>
+                <h3>${s.name || "Вакантно"}</h3>
+                <p class="pos">${s.pos}</p>
+                <button class="btn sm" data-i="${i + 11}">Подробнее</button>
               </div>
             </article>
           `).join("")}
