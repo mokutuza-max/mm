@@ -42,7 +42,7 @@ const STAFF = [
     name: "",
     photo: "",
     rank: "",
-    since: "",
+    since: "xx месяц год",
     quote: "",
     bg: "radar",
     awards: [],
@@ -52,7 +52,7 @@ const STAFF = [
     name: "",
     photo: "",
     rank: "",
-    since: "",
+    since: "xx месяц год",
     quote: "",
     bg: "radar",
     awards: [],
@@ -62,14 +62,14 @@ const STAFF = [
     name: "",
     photo: "",
     rank: "",
-    since: "",
+    since: "xx месяц год",
     quote: "",
     bg: "radar",
     awards: [],
   },
   {
     pos: "Пресс-секретарь министра обороны Кутузовского Федерального округа",
-    name: "Брагин Александр Сергеевич",
+    name: "",
     photo: "",
     rank: "",
     since: "xx месяц год",
@@ -79,10 +79,10 @@ const STAFF = [
   },
   {
     pos: "Руководитель пресс-службы министерства обороны Кутузовского Федерального округа",
-    name: "",
+    name: "Токин Евгений Степанович",
     photo: "",
     rank: "",
-    since: "",
+    since: "27 октября 2026 года",
     quote: "",
     bg: "cam",
     awards: [],
@@ -92,7 +92,7 @@ const STAFF = [
     name: "",
     photo: "",
     rank: "",
-    since: "",
+    since: "xx месяц год",
     quote: "",
     bg: "chat",
     awards: [],
@@ -130,9 +130,49 @@ const NAV = [
   ["obrashcheniya.html", "Обращения"],
 ];
 document.body.insertAdjacentHTML(
-  "afterbegin",
-  `<header id="hd"><div class="wrap bar"><a class="brand" href="index.html">${E}<span><b>Министерство Обороны</b><small>Кутузовский Федеральный Округ</small></span></a><button id="burger" aria-label="Меню">☰</button><nav id="nav">${NAV.map(([h, t]) => `<a href="${h}"${h === cur ? ' class="on"' : ""}>${t}</a>`).join("")}</nav></div><div class="prog" id="prog"></div></header>`,
+  "afterbegin",  
+  `<header id="hd">
+    <div class="wrap bar">
+      <a class="brand" href="index.html">${E}<span><b>Министерство Обороны</b><small>Кутузовский Федеральный Округ</small></span></a>
+      
+      <!-- Новая кнопка управления звуком -->
+      <button id="snd-toggle" class="snd-btn" aria-label="Включить звук" title="Атмосферный эмбиент">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path class="snd-on" d="M11 5L6 9H2v6h4l5 4V5z"/>
+          <path class="snd-waves" d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/>
+        </svg>
+      </button>
+
+      <button id="burger" aria-label="Меню">☰</button>
+      <nav id="nav">${NAV.map(([h, t]) => `<a href="${h}"${h === cur ? ' class="on"' : ""}>${t}</a>`).join("")}</nav>
+    </div>
+    <div class="prog" id="prog"></div>
+    
+    <!-- Скрытый аудио-плеер (Укажите вашу ссылку на аудиофайл вместо 'audio/ambient.mp3') -->
+    <audio id="ambient-audio" loop src="audio/ambient.mp3"></audio>
+  </header>`,
 );
+
+// Добавьте логику работы звука в самый конец JS-файла:
+const sndBtn = $("#snd-toggle");
+const audio = $("#ambient-audio");
+
+if (sndBtn && audio) {
+  // Устанавливаем комфортную фоновую громкость (20% от максимума)
+  audio.volume = 0.2; 
+
+  sndBtn.onclick = () => {
+    const isPlaying = !audio.paused;
+    
+    if (isPlaying) {
+      audio.pause();
+      sndBtn.classList.remove("playing");
+    } else {
+      audio.play().catch(err => console.log("Браузер заблокировал звук:", err));
+      sndBtn.classList.add("playing");
+    }
+  };
+}
 document.body.insertAdjacentHTML(
   "beforeend",
   '<footer><div class="wrap">© Министерство Обороны Кутузовского Федерального Округа. Материалы относятся к игровому процессу GTA 5 RP (сервер RMRP Кутузовский) и не являются реальными государственными документами.</div></footer>',
@@ -200,8 +240,8 @@ const info = (i) => {
 };
 const ST = $("#staff");
 if (ST) {
-    // Формируем структуру трех независимых плашек
-    ST.innerHTML = `
+    // Формируем структуру: кликабельная шапка-кнопка и скрытый контейнер
+     ST.innerHTML = `
     <!-- Первая плашка: Руководящий состав (Индексы 0, 1, 2) -->
     <div class="spoiler-wrapper">
       <button class="spoiler-btn" type="button" data-target="spoiler-main">
@@ -246,7 +286,7 @@ if (ST) {
       </div>
     </div>
 
-    <!-- Третья плашка: Пресс-служба (Индексы 6, 7, 8) -->
+        <!-- Третья плашка: Пресс-служба (Индексы 6, 7, 8) -->
     <div class="spoiler-wrapper">
       <button class="spoiler-btn" type="button" data-target="spoiler-press">
         Пресс-служба министерства обороны Кутузовского федерального округа
@@ -268,27 +308,27 @@ if (ST) {
       </div>
     </div>
   `;
-  // Единый обработчик клика для открытия модального окна "Подробнее" (для всех плашек)
+  
+  // Единый обработчик клика для открытия модального окна "Подробнее" (для обеих плашек)
   ST.onclick = (e) => {
     const b = e.target.closest("[data-i]");
     if (b) info(+b.dataset.i);
   };
-  // Логика плавного раскрытия и закрытия плашки
-  const toggleBtn = ST.querySelector(".spoiler-btn");
-  const content = ST.querySelector(".spoiler-content");
-  
-  toggleBtn.onclick = () => {
-    const isOpen = content.classList.toggle("open");
-    toggleBtn.classList.toggle("active");
-    
-    if (isOpen) {
-        // При открытии выкатываем блок на всю высоту содержимого
-        content.style.maxHeight = content.scrollHeight + "px";
-    } else {
-        // При закрытии принудительно забираем все плашки обратно в 0
-        content.style.maxHeight = "0px";
-    }
-  };
+  // Универсальная логика плавного раскрытия и закрытия плашек
+  ST.querySelectorAll(".spoiler-btn").forEach(btn => {
+    btn.onclick = () => {
+      const targetId = btn.dataset.target;
+      const content = ST.querySelector(`#${targetId}`);
+      const isOpen = content.classList.toggle("open");
+      btn.classList.toggle("active");
+      
+      if (isOpen) {
+          content.style.maxHeight = content.scrollHeight + "px";
+      } else {
+          content.style.maxHeight = "0px";
+      }
+    };
+  });
 }
 // фоновые векторные линии
 $$("[data-bg]").forEach((el) => {
@@ -367,3 +407,50 @@ if (!RM && matchMedia("(pointer:fine)").matches) {
     if (!run) t = c = scrollY;
   });
 }
+
+<!-- Подключаем библиотеку сокетов с сервера -->
+<script src="/socket.io/socket.io.js"></script>
+
+<!-- Ваш основной скрипт сайта -->
+<script src="main.js"></script>
+
+// Инициализируем соединение с сервером
+const socket = io();
+
+// 1. Предположим, вы сохранили имя авторизованного игрока в localStorage
+const savedUserName = localStorage.getItem('user_fio'); 
+
+if (savedUserName) {
+  // Отправляем серверу информацию, что этот пользователь сейчас открыл сайт
+  socket.emit('user-online', { name: savedUserName });
+}
+
+// 2. Слушаем сервер: когда список пользователей онлайн меняется, обновляем точки на сайте
+socket.on('update-status', (usersOnlineList) => {
+  
+  // Находим все карточки сотрудников на странице
+  document.querySelectorAll('.card').forEach(card => {
+    const cardNameElement = card.querySelector('h3');
+    if (!cardNameElement) return;
+    
+    const personName = cardNameElement.textContent.trim();
+    const badge = card.querySelector('.status-badge');
+    const dot = card.querySelector('.status-dot');
+    
+    if (badge && dot) {
+      // Проверяем, есть ли имя этого сотрудника в полученном с сервера списке онлайн-игроков
+      const isOnlineNow = usersOnlineList.includes(personName);
+      
+      if (isOnlineNow) {
+        // Меняем классы индикатора на "В сети"
+        badge.className = 'status-badge online';
+        badge.innerHTML = '<span class="status-dot"></span>В сети';
+      } else {
+        // Меняем классы индикатора на "Не в сети"
+        badge.className = 'status-badge offline';
+        badge.innerHTML = '<span class="status-dot"></span>Не в сети';
+      }
+    }
+  });
+  
+});
