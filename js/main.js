@@ -191,6 +191,10 @@ const BG = {
   wings: `<path d="M215 150l55-30 20-55 10 55 65 30-65 10-10 55-20-55z"/><circle cx="290" cy="150" r="95"/><path d="M180 150H390"/>`,
   crosshair: `<circle cx="290" cy="150" r="95"/><circle cx="290" cy="150" r="45"/><circle cx="290" cy="150" r="10"/><path d="M290 20v35M290 245v35M160 150h35M355 150h35"/><path d="M225 85l15 15M355 85l-15 15M225 215l15-15M355 215l-15-15"/>`,
   ammo: `<path d="M230 190h30v40h-30zm0-75c0-20 15-35 15-35s15 15 15 35v75h-30zm50 75h30v40h-30zm0-75c0-20 15-35 15-35s15 15 15 35v75h-30zm50 75h30v40h-30zm0-75c0-20 15-35 15-35s15 15 15 35v75h-30z"/><path d="M210 230h160"/>`
+  swords: `<path d="M210 230l110-110M220 240l-10-10 15-15 10 10zM320 120l30-10-10 30zM330 230l-110-110M320 240l10-10-15-15-10 10zM220 120l-30-10 10 30z"/><circle cx="270" cy="170" r="15"/>`,
+  helmet: `<path d="M220 150c0-40 30-70 70-70s70 30 70 70v20H220v-20z"/><path d="M230 170v20h20l10-20zM350 170v20h-20l-10-20z"/><path d="M250 150h80v15h-80zM290 80v30"/>`,
+  swat: `<path d="M245 110c0-30 20-50 45-50s45 20 45 50c0 25-10 40-15 45v25h-60v-25c-5-5-15-20-15-45z"/><circle cx="270" cy="115" r="10"/><circle cx="310" cy="115" r="10"/><path d="M280 145l10-10 10 15h-20zM260 175h60M250 85c20-15 50-15 70 0l10 15-40-10-40 10z"/>`,
+  med: `<path d="M270 70h40v50h40v40h-40v50h-40v-50h-40v-40h40V70z"/><circle cx="290" cy="140" r="90"/><path d="M200 80l180 120M200 200l180-120"/>`
 };
 const E = `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#ff8a1f" stroke-width="3"/><polygon points="${star(50, 52, 32, 13)}" fill="none" stroke="#ff8a1f" stroke-width="3"/></svg>`;
 const RM = matchMedia("(prefers-reduced-motion:reduce)").matches,
