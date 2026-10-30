@@ -94,7 +94,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "chat",
+    bg: "cam",
     awards: [],
   },
   {
