@@ -22,5 +22,25 @@
     </main>
     <script src="js/main.js"></script>
 </body>
-
+<div id="auth-screen" class="md auth-layout">
+  <div class="mb">
+    <h2 class="ah">Авторизация в системе МО КФО</h2>
+    <p style="color: var(--mute); margin-bottom: 20px;">Для доступа к материалам Министерства Обороны введите свои данные.</p>
+    
+    <form id="auth-form" class="auth-fields">
+      <div class="field-group">
+        <label>ФИО военнослужащего / Гражданина:</label>
+        <input type="text" id="auth-name" placeholder="Иванов Иван Иванович" required>
+      </div>
+      
+      <div class="field-group">
+        <label>Электронная почта (E-mail):</label>
+        <input type="email" id="auth-email" placeholder="name@domain.com" required>
+      </div>
+      
+      <button type="submit" class="btn">Войти в систему</button>
+    </form>
+  </div>
+</div>
+    
 </html>
