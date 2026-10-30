@@ -240,8 +240,8 @@ const info = (i) => {
 };
 const ST = $("#staff");
 if (ST) {
-    // Формируем структуру: кликабельная шапка-кнопка и скрытый контейнер
-     ST.innerHTML = `
+    // Формируем структуру трех независимых плашек
+    ST.innerHTML = `
     <!-- Первая плашка: Руководящий состав (Индексы 0, 1, 2) -->
     <div class="spoiler-wrapper">
       <button class="spoiler-btn" type="button" data-target="spoiler-main">
@@ -286,7 +286,7 @@ if (ST) {
       </div>
     </div>
 
-        <!-- Третья плашка: Пресс-служба (Индексы 6, 7, 8) -->
+    <!-- Третья плашка: Пресс-служба (Индексы 6, 7, 8) -->
     <div class="spoiler-wrapper">
       <button class="spoiler-btn" type="button" data-target="spoiler-press">
         Пресс-служба министерства обороны Кутузовского федерального округа
@@ -308,13 +308,14 @@ if (ST) {
       </div>
     </div>
   `;
-  
-  // Единый обработчик клика для открытия модального окна "Подробнее" (для обеих плашек)
+
+  // Единый обработчик клика для открытия модального окна "Подробнее" (для всех плашек)
   ST.onclick = (e) => {
     const b = e.target.closest("[data-i]");
     if (b) info(+b.dataset.i);
   };
-  // Универсальная логика плавного раскрытия и закрытия плашек
+
+  // Универсальная логика плавного раскрытия и закрытия для всех трех плашек
   ST.querySelectorAll(".spoiler-btn").forEach(btn => {
     btn.onclick = () => {
       const targetId = btn.dataset.target;
