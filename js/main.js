@@ -24,7 +24,7 @@ const STAFF = [
     rank: "Полковник",
     since: "17 октября 2026 года",
     quote: "",
-    bg: "radar",
+    bg: "swords",
     awards: [],
   },
     {
@@ -44,7 +44,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "doc",
+    bg: "crosshair",
     awards: [],
   },
     {
@@ -54,7 +54,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "doc",
+    bg: "shield",
     awards: [],
   },
     {
@@ -64,7 +64,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "doc",
+    bg: "ammo",
     awards: [],
   },
   {
@@ -84,7 +84,7 @@ const STAFF = [
     rank: "",
     since: "27 октября 2026 года",
     quote: "",
-    bg: "cam",
+    bg: "chat",
     awards: [],
   },
   {
@@ -94,7 +94,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "cam",
+    bg: "doc",
     awards: [],
   },
   {
@@ -104,7 +104,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "chat",
+    bg: "swat",
     awards: [],
   },
   {
@@ -114,7 +114,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "chat",
+    bg: "swat",
     awards: [],
   },
   {
@@ -124,7 +124,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "chat",
+    bg: "helmet",
     awards: [],
   },
   {
@@ -134,7 +134,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "chat",
+    bg: "helmet",
     awards: [],
   },
   {
@@ -144,7 +144,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "chat",
+    bg: "helmet",
     awards: [],
   },
   {
@@ -154,7 +154,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "chat",
+    bg: "helmet",
     awards: [],
   },
   {
@@ -164,7 +164,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "chat",
+    bg: "helmet",
     awards: [],
   },
 ];
