@@ -152,7 +152,7 @@ nav a.on {
 .bg * {
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
-    transition: stroke-dashoffset 2.4s ease
+    transition: stroke-dashoffset 3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .in .bg * {
