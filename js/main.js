@@ -44,7 +44,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "radar",
+    bg: "doc",
     awards: [],
   },
     {
@@ -54,7 +54,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "radar",
+    bg: "doc",
     awards: [],
   },
     {
@@ -64,7 +64,7 @@ const STAFF = [
     rank: "",
     since: "xx месяц год",
     quote: "",
-    bg: "radar",
+    bg: "doc",
     awards: [],
   },
   {
@@ -187,6 +187,7 @@ const BG = {
   chat: `<path d="M205 65h150a14 14 0 0 1 14 14v70a14 14 0 0 1-14 14h-80l-30 26v-26h-40a14 14 0 0 1-14-14V79a14 14 0 0 1 14-14z"/><path d="M228 98h110M228 124h70"/><rect x="290" y="196" width="80" height="44" rx="10"/>`,
   doc: `<rect x="230" y="40" width="140" height="190" rx="8"/><path d="M255 90h90M255 120h90M255 150h55"/><circle cx="335" cy="195" r="16"/>`,
   mail: `<rect x="205" y="80" width="175" height="120" rx="8"/><path d="M205 90l87 64 88-64M205 200l62-52M380 200l-62-52"/>`,
+  doc: `<rect x="225" y="50" width="130" height="190" rx="6"/><path d="M250 95h80M250 125h80M250 155h80M250 185h50"/><path d="M275 35h30v15h-30z"/>`
 };
 const E = `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#ff8a1f" stroke-width="3"/><polygon points="${star(50, 52, 32, 13)}" fill="none" stroke="#ff8a1f" stroke-width="3"/></svg>`;
 const RM = matchMedia("(prefers-reduced-motion:reduce)").matches,
