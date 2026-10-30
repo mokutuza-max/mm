@@ -185,9 +185,12 @@ const BG = {
   mic: `<rect x="262" y="55" width="56" height="110" rx="28"/><path d="M240 140a50 50 0 0 0 100 0M290 190V240M255 240H325M215 105a95 95 0 0 0 0 90M365 105a95 95 0 0 1 0 90"/>`,
   cam: `<rect x="205" y="90" width="170" height="120" rx="12"/><circle cx="290" cy="150" r="38"/><circle cx="290" cy="150" r="20"/><path d="M235 90l14-24h82l14 24M350 112h12"/>`,
   chat: `<path d="M205 65h150a14 14 0 0 1 14 14v70a14 14 0 0 1-14 14h-80l-30 26v-26h-40a14 14 0 0 1-14-14V79a14 14 0 0 1 14-14z"/><path d="M228 98h110M228 124h70"/><rect x="290" y="196" width="80" height="44" rx="10"/>`,
-  doc: `<rect x="230" y="40" width="140" height="190" rx="8"/><path d="M255 90h90M255 120h90M255 150h55"/><circle cx="335" cy="195" r="16"/>`,
+  doc: `<rect x="225" y="50" width="130" height="190" rx="6"/><path d="M250 95h80M250 125h80M250 155h80M250 185h50"/><path d="M275 35h30v15h-30z"/>`,
   mail: `<rect x="205" y="80" width="175" height="120" rx="8"/><path d="M205 90l87 64 88-64M205 200l62-52M380 200l-62-52"/>`,
-  doc: `<rect x="225" y="50" width="130" height="190" rx="6"/><path d="M250 95h80M250 125h80M250 155h80M250 185h50"/><path d="M275 35h30v15h-30z"/>`
+  shield: `<path d="M225 60h130v45c0 65-65 105-65 105s-65-40-65-105V60z"/><path d="M245 80h90v25c0 45-45 75-45 75s-45-30-45-75V80z"/><path d="M290 95v50M270 120h40"/>`,
+  wings: `<path d="M215 150l55-30 20-55 10 55 65 30-65 10-10 55-20-55z"/><circle cx="290" cy="150" r="95"/><path d="M180 150H390"/>`,
+  crosshair: `<circle cx="290" cy="150" r="95"/><circle cx="290" cy="150" r="45"/><circle cx="290" cy="150" r="10"/><path d="M290 20v35M290 245v35M160 150h35M355 150h35"/><path d="M225 85l15 15M355 85l-15 15M225 215l15-15M355 215l-15-15"/>`,
+  ammo: `<path d="M230 190h30v40h-30zm0-75c0-20 15-35 15-35s15 15 15 35v75h-30zm50 75h30v40h-30zm0-75c0-20 15-35 15-35s15 15 15 35v75h-30zm50 75h30v40h-30zm0-75c0-20 15-35 15-35s15 15 15 35v75h-30z"/><path d="M210 230h160"/>`
 };
 const E = `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#ff8a1f" stroke-width="3"/><polygon points="${star(50, 52, 32, 13)}" fill="none" stroke="#ff8a1f" stroke-width="3"/></svg>`;
 const RM = matchMedia("(prefers-reduced-motion:reduce)").matches,
