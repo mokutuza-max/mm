@@ -6,7 +6,7 @@ const STAFF = [
     photo: "img/minister.png",
     rank: "Генерал-лейтенант",
     since: "17 сентября 2026 года",
-    quote: "Уважаемые жители Кутузовского федерального округа, военнослужащие и ветераны! Министерство обороны округа стоит на страже мира и безопасности нашей земли. Мы последовательно укрепляем боеготовность частей, модернизируем технику и вооружение, заботимся о каждом военнослужащем и его семье. Наша сила — в людях. Поэтому особое внимание уделяем подготовке кадров, социальным гарантиям, жилищному обеспечению и открытому диалогу с гражданами. Каждое обращение будет рассмотрено.",
+    quote: "Уважаемые жители Кутузовского федерального округа, военнослужащие и ветераны! Министерство обороны округа стоит на страже мира и безопасности нашей земли. Мы последовательно укрепляем боеготовность частей, модернизируем технику и вооружение, заботимся о каждом военнослужащем и его семье. Наша сила — в людях. Поэтому особое внимание уделяем подготовке кадров, socialным гарантиям, жилищному обеспечению и открытому диалогу с гражданами. Каждое обращение будет рассмотрено.",
     bg: "star",
     awards: [
       {
@@ -27,7 +27,7 @@ const STAFF = [
     bg: "radar",
     awards: [],
   },
-    {
+  {
     pos: "Заместитель министра обороны Кутузовского Федерального округа",
     name: "Невский Альфредо Максимович",
     photo: "img/zam.png",
@@ -37,7 +37,7 @@ const STAFF = [
     bg: "radar",
     awards: [],
   },
-    {
+  {
     pos: "Помощник министра обороны Кутузовского Федерального округа",
     name: "",
     photo: "",
@@ -47,7 +47,7 @@ const STAFF = [
     bg: "radar",
     awards: [],
   },
-    {
+  {
     pos: "Помощник министра обороны Кутузовского Федерального округа",
     name: "",
     photo: "",
@@ -57,7 +57,7 @@ const STAFF = [
     bg: "radar",
     awards: [],
   },
-    {
+  {
     pos: "Помощник министра обороны Кутузовского Федерального округа",
     name: "",
     photo: "",
@@ -98,6 +98,7 @@ const STAFF = [
     awards: [],
   },
 ];
+
 const star = (cx, cy, R, r) =>
   Array.from({ length: 10 }, (_, i) => {
     const a = ((-90 + i * 36) * Math.PI) / 180,
@@ -108,6 +109,7 @@ const star = (cx, cy, R, r) =>
       (cy + k * Math.sin(a)).toFixed(1)
     );
   }).join(" ");
+
 const BG = {
   hero: `<polygon points="${star(200, 150, 120, 48)}"/><circle cx="200" cy="150" r="140"/><circle cx="200" cy="150" r="175"/><path d="M0 150H400M200 0V300"/>`,
   star: `<polygon points="${star(290, 150, 105, 42)}"/><circle cx="290" cy="150" r="128"/><circle cx="290" cy="150" r="145"/>`,
@@ -118,6 +120,7 @@ const BG = {
   doc: `<rect x="230" y="40" width="140" height="190" rx="8"/><path d="M255 90h90M255 120h90M255 150h55"/><circle cx="335" cy="195" r="16"/>`,
   mail: `<rect x="205" y="80" width="175" height="120" rx="8"/><path d="M205 90l87 64 88-64M205 200l62-52M380 200l-62-52"/>`,
 };
+
 const E = `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#ff8a1f" stroke-width="3"/><polygon points="${star(50, 52, 32, 13)}" fill="none" stroke="#ff8a1f" stroke-width="3"/></svg>`;
 const RM = matchMedia("(prefers-reduced-motion:reduce)").matches,
   $ = (s) => document.querySelector(s),
@@ -129,56 +132,49 @@ const NAV = [
   ["trudoustroystvo.html", "Трудоустройство"],
   ["obrashcheniya.html", "Обращения"],
 ];
+
 document.body.insertAdjacentHTML(
   "afterbegin",  
   `<header id="hd">
     <div class="wrap bar">
       <a class="brand" href="index.html">${E}<span><b>Министерство Обороны</b><small>Кутузовский Федеральный Округ</small></span></a>
-      
-      <!-- Новая кнопка управления звуком -->
       <button id="snd-toggle" class="snd-btn" aria-label="Включить звук" title="Атмосферный эмбиент">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path class="snd-on" d="M11 5L6 9H2v6h4l5 4V5z"/>
           <path class="snd-waves" d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/>
         </svg>
       </button>
-
       <button id="burger" aria-label="Меню">☰</button>
       <nav id="nav">${NAV.map(([h, t]) => `<a href="${h}"${h === cur ? ' class="on"' : ""}>${t}</a>`).join("")}</nav>
     </div>
     <div class="prog" id="prog"></div>
-    
-    <!-- Скрытый аудио-плеер (Укажите вашу ссылку на аудиофайл вместо 'audio/ambient.mp3') -->
     <audio id="ambient-audio" loop src="audio/ambient.mp3"></audio>
   </header>`,
 );
 
-// Добавьте логику работы звука в самый конец JS-файла:
 const sndBtn = $("#snd-toggle");
 const audio = $("#ambient-audio");
 
 if (sndBtn && audio) {
-  // Устанавливаем комфортную фоновую громкость (20% от максимума)
   audio.volume = 0.2; 
-
   sndBtn.onclick = () => {
-    const isPlaying = !audio.paused;
-    
-    if (isPlaying) {
+    if (!audio.paused) {
       audio.pause();
       sndBtn.classList.remove("playing");
     } else {
-      audio.play().catch(err => console.log("Браузер заблокировал звук:", err));
+      audio.play().catch(err => console.log("Звук заблокирован:", err));
       sndBtn.classList.add("playing");
     }
   };
 }
+
 document.body.insertAdjacentHTML(
   "beforeend",
   '<footer><div class="wrap">© Министерство Обороны Кутузовского Федерального Округа. Материалы относятся к игровому процессу GTA 5 RP (сервер RMRP Кутузовский) и не являются реальными государственными документами.</div></footer>',
 );
+
 $("#burger").onclick = () => $("#nav").classList.toggle("open");
-// модальные окна
+
 const openM = (h) => {
   const m = document.createElement("div");
   m.className = "md";
@@ -191,19 +187,23 @@ const openM = (h) => {
   m.querySelector(".x").focus();
   return m;
 };
+
 const closeM = (m) => {
   m.remove();
   if (!$(".md")) document.body.style.overflow = "";
 };
+
 addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     const a = $$(".md");
     a.length && closeM(a[a.length - 1]);
   }
 });
+
 const ph = (s) =>
   s.photo ? `<img src="${s.photo}" alt="${s.name}">` : "<span>ВАКАНТНО</span>";
 const medal = `<svg viewBox="0 0 100 130" fill="none" stroke="#ff8a1f" stroke-width="2"><path d="M30 0h40l-9 52H39zM50 52v6"/><circle cx="50" cy="88" r="34"/><circle cx="50" cy="88" r="27"/><polygon points="${star(50, 88, 20, 8)}"/></svg>`;
+
 const awards = (s) => {
   const m = openM(""),
     b = m.querySelector(".mb"),
@@ -211,16 +211,11 @@ const awards = (s) => {
     N = s.awards.length;
   const pic = (a) => (a.img ? `<img src="${a.img}" alt="">` : medal);
   const list = () => {
-    b.innerHTML =
-      X +
-      `<h2 class="ah">Награды · ${N}</h2><div class="ag">${s.awards.map((a, i) => `<button class="at" data-k="${i}">${pic(a)}<span>${a.n}</span></button>`).join("")}</div>`;
+    b.innerHTML = X + `<h2 class="ah">Награды · ${N}</h2><div class="ag">${s.awards.map((a, i) => `<button class="at" data-k="${i}">${pic(a)}<span>${a.n}</span></button>`).join("")}</div>`;
   };
   const one = (i) => {
     const a = s.awards[i];
-    b.innerHTML =
-      X +
-      (N > 1 ? '<button class="bk">← Все награды</button>' : "") +
-      `<div class="aw">${pic(a)}<h3>${a.n}</h3><time>Дата присвоения: ${a.date}</time><p>${a.d}</p></div>`;
+    b.innerHTML = X + (N > 1 ? '<button class="bk">← Все награды</button>' : "") + `<div class="aw">${pic(a)}<h3>${a.n}</h3><time>Дата присвоения: ${a.date}</time><p>${a.d}</p></div>`;
   };
   b.onclick = (e) => {
     const t = e.target.closest(".at");
@@ -229,6 +224,7 @@ const awards = (s) => {
   };
   N > 1 ? list() : one(0);
 };
+
 const info = (i) => {
   const s = STAFF[i],
     n = s.name || "Вакантно";
@@ -238,11 +234,10 @@ const info = (i) => {
   const b = m.querySelector("#aw");
   if (b) b.onclick = () => awards(s);
 };
+
 const ST = $("#staff");
 if (ST) {
-    // Формируем структуру: кликабельная шапка-кнопка и скрытый контейнер
-     ST.innerHTML = `
-    <!-- Первая плашка: Руководящий состав (Индексы 0, 1, 2) -->
+  ST.innerHTML = `
     <div class="spoiler-wrapper">
       <button class="spoiler-btn" type="button" data-target="spoiler-main">
         Руководящий состав Министерства Обороны Кутузовского Федерального округа
@@ -263,230 +258,3 @@ if (ST) {
         </div>
       </div>
     </div>
-
-    <!-- Вторая плашка: Помощники (Индексы 3, 4, 5) -->
-    <div class="spoiler-wrapper">
-      <button class="spoiler-btn" type="button" data-target="spoiler-helpers">
-        Помощники министра обороны Кутузовского федерального округа
-        <span class="spoiler-arrow">▼</span>
-      </button>
-      <div class="spoiler-content" id="spoiler-helpers">
-        <div class="grid st">
-          ${STAFF.slice(3, 6).map((s, i) => `
-            <article class="card rv" data-bg="${s.bg}">
-              <div class="ph">${ph(s)}</div>
-              <div>
-                <h3>${s.name || "Вакантно"}</h3>
-                <p class="pos">${s.pos}</p>
-                <button class="btn sm" data-i="${i + 3}">Подробнее</button>
-              </div>
-            </article>
-          `).join("")}
-        </div>
-      </div>
-    </div>
-
-        <!-- Третья плашка: Пресс-служба (Индексы 6, 7, 8) -->
-    <div class="spoiler-wrapper">
-      <button class="spoiler-btn" type="button" data-target="spoiler-press">
-        Пресс-служба министерства обороны Кутузовского федерального округа
-        <span class="spoiler-arrow">▼</span>
-      </button>
-      <div class="spoiler-content" id="spoiler-press">
-        <div class="grid st">
-          ${STAFF.slice(6, 9).map((s, i) => `
-            <article class="card rv" data-bg="${s.bg}">
-              <div class="ph">${ph(s)}</div>
-              <div>
-                <h3>${s.name || "Вакантно"}</h3>
-                <p class="pos">${s.pos}</p>
-                <button class="btn sm" data-i="${i + 6}">Подробнее</button>
-              </div>
-            </article>
-          `).join("")}
-        </div>
-      </div>
-    </div>
-  `;
-  
-  // Единый обработчик клика для открытия модального окна "Подробнее" (для обеих плашек)
-  ST.onclick = (e) => {
-    const b = e.target.closest("[data-i]");
-    if (b) info(+b.dataset.i);
-  };
-  // Универсальная логика плавного раскрытия и закрытия плашек
-  ST.querySelectorAll(".spoiler-btn").forEach(btn => {
-    btn.onclick = () => {
-      const targetId = btn.dataset.target;
-      const content = ST.querySelector(`#${targetId}`);
-      const isOpen = content.classList.toggle("open");
-      btn.classList.toggle("active");
-      
-      if (isOpen) {
-          content.style.maxHeight = content.scrollHeight + "px";
-      } else {
-          content.style.maxHeight = "0px";
-      }
-    };
-  });
-}
-// фоновые векторные линии
-$$("[data-bg]").forEach((el) => {
-  el.insertAdjacentHTML(
-    "afterbegin",
-    `<svg class="bg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${BG[el.dataset.bg] || ""}</svg>`,
-  );
-  el.querySelectorAll(".bg *").forEach((x) => x.setAttribute("pathLength", 1));
-});
-// анимации
-const h1 = $(".hero h1");
-if (h1)
-  h1.innerHTML = h1.textContent
-    .split(" ")
-    .map((w, i) => `<span style="--d:${i * 0.12}s">${w}</span>`)
-    .join(" ");
-$$(".rv").forEach((e) =>
-  e.style.setProperty("--i", [...e.parentNode.children].indexOf(e)),
-);
-const io = new IntersectionObserver(
-  (es) =>
-    es.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add("in");
-        io.unobserve(e.target);
-      }
-    }),
-  { threshold: 0.15 },
-);
-$$(".rv,.top,.steps,.hero").forEach((e) => io.observe(e));
-const hd = $("#hd"),
-  pr = $("#prog");
-const upd = () => {
-  const m = document.documentElement.scrollHeight - innerHeight;
-  hd.classList.toggle("sm", scrollY > 40);
-  pr.style.width = (m > 0 ? (scrollY / m) * 100 : 0) + "%";
-};
-addEventListener("scroll", upd, { passive: true });
-upd();
-// плавный скролл колесом мыши
-if (!RM && matchMedia("(pointer:fine)").matches) {
-  const de = document.documentElement;
-  de.style.scrollBehavior = "auto";
-  let t = scrollY,
-    c = scrollY,
-    run = false;
-  const mx = () => de.scrollHeight - innerHeight;
-  const tick = () => {
-    c += (t - c) * 0.085;
-    if (Math.abs(t - c) < 0.5) {
-      c = t;
-      run = false;
-    }
-    scrollTo(0, c);
-    if (run) requestAnimationFrame(tick);
-  };
-  addEventListener(
-    "wheel",
-    (e) => {
-      if (e.ctrlKey || $(".md")) return;
-      const big = e.deltaMode === 1 || Math.abs(e.deltaY) >= 40;
-      if (!big && !run) return;
-      e.preventDefault();
-      t = Math.max(
-        0,
-        Math.min(mx(), t + e.deltaY * (e.deltaMode === 1 ? 34 : 1)),
-      );
-      if (!run) {
-        run = true;
-        requestAnimationFrame(tick);
-      }
-    },
-    { passive: false },
-  );
-  addEventListener("scroll", () => {
-    if (!run) t = c = scrollY;
-  });
-}
-
-<!-- Подключаем библиотеку сокетов с сервера -->
-<script src="/socket.io/socket.io.js"></script>
-
-<!-- Ваш основной скрипт сайта -->
-<script src="main.js"></script>
-
-// Инициализируем соединение с сервером
-const socket = io();
-
-// 1. Предположим, вы сохранили имя авторизованного игрока в localStorage
-const savedUserName = localStorage.getItem('user_fio'); 
-
-if (savedUserName) {
-  // Отправляем серверу информацию, что этот пользователь сейчас открыл сайт
-  socket.emit('user-online', { name: savedUserName });
-}
-
-// 2. Слушаем сервер: когда список пользователей онлайн меняется, обновляем точки на сайте
-socket.on('update-status', (usersOnlineList) => {
-  
-  // Находим все карточки сотрудников на странице
-  document.querySelectorAll('.card').forEach(card => {
-    const cardNameElement = card.querySelector('h3');
-    if (!cardNameElement) return;
-    
-    const personName = cardNameElement.textContent.trim();
-    const badge = card.querySelector('.status-badge');
-    const dot = card.querySelector('.status-dot');
-    
-    if (badge && dot) {
-      // Проверяем, есть ли имя этого сотрудника в полученном с сервера списке онлайн-игроков
-      const isOnlineNow = usersOnlineList.includes(personName);
-      
-      if (isOnlineNow) {
-        // Меняем классы индикатора на "В сети"
-        badge.className = 'status-badge online';
-        badge.innerHTML = '<span class="status-dot"></span>В сети';
-      } else {
-        // Меняем классы индикатора на "Не в сети"
-        badge.className = 'status-badge offline';
-        badge.innerHTML = '<span class="status-dot"></span>Не в сети';
-      }
-    }
-  });
-  
-});
-
-// Логика авторизации с плавным затуханием (fade-out)
-const authForm = document.getElementById('auth-form');
-const authScreen = document.getElementById('auth-screen');
-
-if (authForm && authScreen) {
-  authForm.addEventListener('submit', (e) => {
-    // 1. Предотвращаем стандартную перезагрузку страницы браузером
-    e.preventDefault(); 
-    
-    // 2. Получаем данные из полей ввода
-    const userFio = document.getElementById('auth-name').value.trim();
-    const userEmail = document.getElementById('auth-email').value.trim();
-    
-    // 3. Сохраняем данные в браузер (чтобы сайт помнил пользователя)
-    localStorage.setItem('user_fio', userFio);
-    localStorage.setItem('user_email', userEmail);
-    
-    // 4. Добавляем класс плавного затухания
-    authScreen.classList.add('hide');
-    
-    // 5. После завершения анимации (через 400 мс) полностью удаляем блок из HTML
-    setTimeout(() => {
-      authScreen.remove();
-      // Возвращаем прокрутку страницы, если она была заблокирована
-      document.body.style.overflow = ""; 
-    }, 400);
-  });
-}
-
-// Проверка при загрузке страницы: если пользователь уже входил ранее, сразу убираем форму
-document.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('user_fio') && authScreen) {
-    authScreen.remove();
-  }
-});
