@@ -1,48 +1,23 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Состав Министерства Обороны</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-    <!-- Основной контент страницы -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Главная — МО Кутузовского ФО</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
     <main>
-        <div class="wrap top">
-            <h1>Личный состав</h1>
-            <p>Управление и руководство структурами округа.</p>
-        </div>
-        
-        <section class="s wrap">
-            <!-- Сюда ваш JS выводит плашки людей -->
-            <div id="staff"></div> 
+        <section class="hero in" data-bg="hero">
+            <div class="wrap">
+                <h1>Министерство Обороны Кутузовского Федерального Округа</h1><a class="btn"
+                    href="obrashcheniya.html">Написать обращение</a>
+            </div>
         </section>
     </main>
-
-    <!-- ВСТАВЛЯЙТЕ КОД ФОРМЫ АВТОРИЗАЦИИ СЮДА (В САМЫЙ НИЗ BODY) -->
-    <div id="auth-screen" class="md auth-layout">
-      <div class="mb">
-        <h2 class="ah">Авторизация в системе МО КФО</h2>
-        <p style="color: var(--mute); margin-bottom: 20px;">Для доступа к материалам Министерства Обороны введите свои данные.</p>
-        
-        <form id="auth-form" class="auth-fields">
-          <div class="field-group">
-            <label>ФИО военнослужащего / Гражданина:</label>
-            <input type="text" id="auth-name" placeholder="Иванов Иван Иванович" required>
-          </div>
-          
-          <div class="field-group">
-            <label>Электронная почта (E-mail):</label>
-            <input type="email" id="auth-email" placeholder="name@domain.com" required>
-          </div>
-          
-          <button type="submit" class="btn" style="width: 100%; margin-top: 15px;">Войти в систему</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Подключение ваших скриптов -->
-    <script href="main.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
