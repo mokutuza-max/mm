@@ -130,9 +130,49 @@ const NAV = [
   ["obrashcheniya.html", "Обращения"],
 ];
 document.body.insertAdjacentHTML(
-  "afterbegin",
-  `<header id="hd"><div class="wrap bar"><a class="brand" href="index.html">${E}<span><b>Министерство Обороны</b><small>Кутузовский Федеральный Округ</small></span></a><button id="burger" aria-label="Меню">☰</button><nav id="nav">${NAV.map(([h, t]) => `<a href="${h}"${h === cur ? ' class="on"' : ""}>${t}</a>`).join("")}</nav></div><div class="prog" id="prog"></div></header>`,
+  "afterbegin",  
+  `<header id="hd">
+    <div class="wrap bar">
+      <a class="brand" href="index.html">${E}<span><b>Министерство Обороны</b><small>Кутузовский Федеральный Округ</small></span></a>
+      
+      <!-- Новая кнопка управления звуком -->
+      <button id="snd-toggle" class="snd-btn" aria-label="Включить звук" title="Атмосферный эмбиент">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path class="snd-on" d="M11 5L6 9H2v6h4l5 4V5z"/>
+          <path class="snd-waves" d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/>
+        </svg>
+      </button>
+
+      <button id="burger" aria-label="Меню">☰</button>
+      <nav id="nav">${NAV.map(([h, t]) => `<a href="${h}"${h === cur ? ' class="on"' : ""}>${t}</a>`).join("")}</nav>
+    </div>
+    <div class="prog" id="prog"></div>
+    
+    <!-- Скрытый аудио-плеер (Укажите вашу ссылку на аудиофайл вместо 'audio/ambient.mp3') -->
+    <audio id="ambient-audio" loop src="audio/ambient.mp3"></audio>
+  </header>`,
 );
+
+// Добавьте логику работы звука в самый конец JS-файла:
+const sndBtn = $("#snd-toggle");
+const audio = $("#ambient-audio");
+
+if (sndBtn && audio) {
+  // Устанавливаем комфортную фоновую громкость (20% от максимума)
+  audio.volume = 0.2; 
+
+  sndBtn.onclick = () => {
+    const isPlaying = !audio.paused;
+    
+    if (isPlaying) {
+      audio.pause();
+      sndBtn.classList.remove("playing");
+    } else {
+      audio.play().catch(err => console.log("Браузер заблокировал звук:", err));
+      sndBtn.classList.add("playing");
+    }
+  };
+}
 document.body.insertAdjacentHTML(
   "beforeend",
   '<footer><div class="wrap">© Министерство Обороны Кутузовского Федерального Округа. Материалы относятся к игровому процессу GTA 5 RP (сервер RMRP Кутузовский) и не являются реальными государственными документами.</div></footer>',
