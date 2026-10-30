@@ -786,9 +786,25 @@ blockquote cite {
    ИСПРАВЛЕННЫЕ СТИЛИ ДЛЯ ФОРМЫ АВТОРИЗАЦИИ
    ========================================================================== */
 
-/* Ограничиваем ширину окна авторизации, чтобы оно не растягивалось */
+/* Перебиваем стандартные стили для модального окна авторизации */
+.auth-layout {
+    background: #0a0a0af5 !important; /* Делаем подложку полностью темной, скрывая сайт */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease-out;
+}
+
+/* Ограничиваем максимальную ширину окна авторизации */
 .auth-layout .mb {
-    max-width: 500px;
+    max-width: 500px !important;
+    width: 100%;
+    text-align: left;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Скрываем стандартный крестик "Закрыть" модального окна, так как войти нужно обязательно */
+.auth-layout .x {
+    display: none !important;
 }
 
 /* Группы полей (Label + Input) */
@@ -797,10 +813,9 @@ blockquote cite {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    text-align: left;
 }
 
-/* Текст подписей к полям */
+/* Текст подписей к полям ввода */
 .auth-fields label {
     font-family: Oswald, Impact, sans-serif;
     font-size: 13px;
@@ -809,66 +824,39 @@ blockquote cite {
     color: var(--mute);
 }
 
-/* Стилизация текстовых полей ввода */
+/* Стилизация текстовых полей */
 .auth-fields input {
     width: 100%;
-    background: var(--bg); /* Фон поля #0a0a0a */
-    border: 1px solid var(--ln); /* Граница #272727 */
+    background: var(--bg); /* Использовать #0a0a0a */
+    border: 1px solid var(--ln); /* Использовать #272727 */
     color: var(--ink);
     padding: 12px 16px;
     font-family: 'PT Sans', Arial, sans-serif;
     font-size: 15px;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Эффект при клике на поле ввода */
+/* Эффект оливковой подсветки при фокусе на инпуте */
 .auth-fields input:focus {
     outline: none;
-    border-color: var(--or); /* Оливковая подсветка */
+    border-color: var(--or);
+    box-shadow: inset 0 0 5px rgba(85, 88, 69, 0.3);
 }
 
-/* Эффект при клике (фокусе) на поле ввода */
-.auth-fields input:focus {
-    outline: none;
-    border-color: var(--or); /* Оливковая подсветка */
-    box-shadow: inset 0 0 5px rgba(85, 88, 69, 0.2);
-}
-
-/* Плейсхолдеры (подсказки внутри полей) */
+/* Цвет текста подсказок плейсхолдера */
 .auth-fields input::placeholder {
-    color: #4a4a4a;
+    color: #444;
 }
 
-/* Кнопка "Войти в систему" (наследует стили главного CSS) */
+/* Кнопка отправки формы на всю ширину окна */
 .auth-fields .btn {
     width: 100%;
     margin-top: 10px;
-    background: var(--or); /* Оливковый цвет фона */
-    color: #0a0a0a; /* Темный текст для контраста */
-    padding: 14px 32px;
-    font-family: Oswald, sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    border: 0;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
+    display: block;
 }
 
-/* Эффект при наведении на кнопку */
-.auth-fields .btn:hover {
-    background: #6a6e57; /* Более светлый оливковый */
-}
-
-/* Эффект при нажатии на кнопку */
-.auth-fields .btn:active {
-    transform: scale(0.98);
-}
-
-/* Класс для плавного затухания формы */
+/* Анимация плавного растворения при успешном входе */
 .auth-layout.hide {
-    opacity: 0;
-    pointer-events: none; /* Отключаем клики во время и после анимации */
-    transition: opacity 0.4s ease-out;
+    opacity: 0 !important;
+    pointer-events: none;
 }
