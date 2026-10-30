@@ -200,14 +200,14 @@ const info = (i) => {
 };
 const ST = $("#staff");
 if (ST) {
-    // Формируем структуру: кликабельная шапка-кнопка и скрытый контейнер
-    ST.innerHTML = `
+  ST.innerHTML = `
+    <!-- Первая плашка: Руководящий состав (Индексы 0, 1, 2) -->
     <div class="spoiler-wrapper">
-      <button class="spoiler-btn" type="button">
+      <button class="spoiler-btn" type="button" data-target="spoiler-main">
         Руководящий состав Министерства Обороны Кутузовского Федерального округа
         <span class="spoiler-arrow">▼</span>
       </button>
-      <div class="spoiler-content">
+      <div class="spoiler-content" id="spoiler-main">
         <div class="grid st">
           ${STAFF.slice(0, 3).map((s, i) => `
             <article class="card rv" data-bg="${s.bg}">
@@ -222,28 +222,72 @@ if (ST) {
         </div>
       </div>
     </div>
+
+    <!-- Вторая плашка: Только Помощники (Индексы 3, 4, 5) -->
+    <div class="spoiler-wrapper">
+      <button class="spoiler-btn" type="button" data-target="spoiler-helpers">
+        Помощники министра обороны Кутузовского федерального округа
+        <span class="spoiler-arrow">▼</span>
+      </button>
+      <div class="spoiler-content" id="spoiler-helpers">
+        <div class="grid st">
+          ${STAFF.slice(3, 6).map((s, i) => `
+            <article class="card rv" data-bg="${s.bg}">
+              <div class="ph">${ph(s)}</div>
+              <div>
+                <h3>${s.name || "Вакантно"}</h3>
+                <p class="pos">${s.pos}</p>
+                <button class="btn sm" data-i="${i + 3}">Подробнее</button>
+              </div>
+            </article>
+          `).join("")}
+        </div>
+      </div>
+    </div>
+
+    <!-- Третья плашка: Пресс-служба (Индексы 6, 7, 8) -->
+    <div class="spoiler-wrapper">
+      <button class="spoiler-btn" type="button" data-target="spoiler-press">
+        Пресс-служба министерства обороны Кутузовского федерального округа
+        <span class="spoiler-arrow">▼</span>
+      </button>
+      <div class="spoiler-content" id="spoiler-press">
+        <div class="grid st">
+          ${STAFF.slice(6, 9).map((s, i) => `
+            <article class="card rv" data-bg="${s.bg}">
+              <div class="ph">${ph(s)}</div>
+              <div>
+                <h3>${s.name || "Вакантно"}</h3>
+                <p class="pos">${s.pos}</p>
+                <button class="btn sm" data-i="${i + 6}">Подробнее</button>
+              </div>
+            </article>
+          `).join("")}
+        </div>
+      </div>
+    </div>
   `;
-    // Обработчик клика для открытия модального окна "Подробнее"
+  // Обработчик клика для кнопок "Подробнее"
   ST.onclick = (e) => {
     const b = e.target.closest("[data-i]");
     if (b) info(+b.dataset.i);
   };
-  // Логика плавного раскрытия и закрытия плашки
-  const toggleBtn = ST.querySelector(".spoiler-btn");
-  const content = ST.querySelector(".spoiler-content");
-  
-  toggleBtn.onclick = () => {
-    const isOpen = content.classList.toggle("open");
-    toggleBtn.classList.toggle("active");
-    
-    if (isOpen) {
-        // При открытии выкатываем блок на всю высоту содержимого
-        content.style.maxHeight = content.scrollHeight + "px";
-    } else {
-        // При закрытии принудительно забираем все плашки обратно в 0
-        content.style.maxHeight = "0px";
-    }
-  };
+
+  // Универсальная логика открытия и закрытия плашек
+  ST.querySelectorAll(".spoiler-btn").forEach(btn => {
+    btn.onclick = () => {
+      const targetId = btn.dataset.target;
+      const content = ST.querySelector(`#${targetId}`);
+      const isOpen = content.classList.toggle("open");
+      btn.classList.toggle("active");
+      
+      if (isOpen) {
+          content.style.maxHeight = content.scrollHeight + "px";
+      } else {
+          content.style.maxHeight = "0px";
+      }
+    };
+  });
 }
 // фоновые векторные линии
 $$("[data-bg]").forEach((el) => {
