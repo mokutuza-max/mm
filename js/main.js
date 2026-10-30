@@ -351,7 +351,7 @@ if (ST) {
               <div>
                 <h3>${s.name || "Вакантно"}</h3>
                 <p class="pos">${s.pos}</p>
-                <button class="btn sm" data-i="${i + 6}">Подробнее</button>
+                <button class="btn sm" data-i="${i + 8}">Подробнее</button>
               </div>
             </article>
           `).join("")}
@@ -373,7 +373,7 @@ if (ST) {
               <div>
                 <h3>${s.name || "Вакантно"}</h3>
                 <p class="pos">${s.pos}</p>
-                <button class="btn sm" data-i="${i + 6}">Подробнее</button>
+                <button class="btn sm" data-i="${i + 13}">Подробнее</button>
               </div>
             </article>
           `).join("")}
