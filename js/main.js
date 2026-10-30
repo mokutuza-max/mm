@@ -24,7 +24,7 @@ const STAFF = [
     rank: "Полковник",
     since: "17 октября 2026 года",
     quote: "",
-    bg: "swords",
+    bg: "rocket",
     awards: [],
   },
     {
@@ -194,7 +194,11 @@ const BG = {
   swords: `<path d="M210 230l110-110M220 240l-10-10 15-15 10 10zM320 120l30-10-10 30zM330 230l-110-110M320 240l10-10-15-15-10 10zM220 120l-30-10 10 30z"/><circle cx="270" cy="170" r="15"/>`,
   helmet: `<path d="M220 150c0-40 30-70 70-70s70 30 70 70v20H220v-20z"/><path d="M230 170v20h20l10-20zM350 170v20h-20l-10-20z"/><path d="M250 150h80v15h-80zM290 80v30"/>`,
   swat: `<path d="M245 110c0-30 20-50 45-50s45 20 45 50c0 25-10 40-15 45v25h-60v-25c-5-5-15-20-15-45z"/><circle cx="270" cy="115" r="10"/><circle cx="310" cy="115" r="10"/><path d="M280 145l10-10 10 15h-20zM260 175h60M250 85c20-15 50-15 70 0l10 15-40-10-40 10z"/>`,
-  med: `<path d="M270 70h40v50h40v40h-40v50h-40v-50h-40v-40h40V70z"/><circle cx="290" cy="140" r="90"/><path d="M200 80l180 120M200 200l180-120"/>`
+  med: `<path d="M270 70h40v50h40v40h-40v50h-40v-50h-40v-40h40V70z"/><circle cx="290" cy="140" r="90"/><path d="M200 80l180 120M200 200l180-120"/>`,
+  tank: `<rect x="230" y="140" width="120" height="50" rx="10"/><rect x="245" y="110" width="80" height="32" rx="6"/><path d="M255 125h110M220 175h140l-10 25H230z"/><circle cx="250" cy="188" r="10"/><circle cx="280" cy="188" r="10"/><circle cx="310" cy="188" r="10"/><circle cx="340" cy="188" r="10"/>`,
+  rocket: `<path d="M275 60l15-25 15 25v110l-30 15zm0 130l-15 20v15l15-10zm30 0l15 20v15l-15-10zM290 200v40m-10-30l10 15 10-15"/><circle cx="290" cy="130" r="85"/><path d="M190 130h50m100 0h50"/>`,
+  radio: `<path d="M290 60l40 160H250zm0 60l20 80H270zm0-30V40"/><circle cx="290" cy="40" r="6"/><path d="M260 65a45 45 0 0 1 60 0M240 50a75 75 0 0 1 100 0M220 35a105 105 0 0 1 140 0"/>`,
+  justice: `<path d="M290 40v180M245 80h90M245 80l20 40h-40zm90 0l20 40h-40zM235 120a10 10 0 0 0 20 0M325 120a10 10 0 0 0 20 0M265 220h50"/>`
 };
 const E = `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#ff8a1f" stroke-width="3"/><polygon points="${star(50, 52, 32, 13)}" fill="none" stroke="#ff8a1f" stroke-width="3"/></svg>`;
 const RM = matchMedia("(prefers-reduced-motion:reduce)").matches,
