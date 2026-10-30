@@ -407,3 +407,50 @@ if (!RM && matchMedia("(pointer:fine)").matches) {
     if (!run) t = c = scrollY;
   });
 }
+
+<!-- Подключаем библиотеку сокетов с сервера -->
+<script src="/socket.io/socket.io.js"></script>
+
+<!-- Ваш основной скрипт сайта -->
+<script src="main.js"></script>
+
+// Инициализируем соединение с сервером
+const socket = io();
+
+// 1. Предположим, вы сохранили имя авторизованного игрока в localStorage
+const savedUserName = localStorage.getItem('user_fio'); 
+
+if (savedUserName) {
+  // Отправляем серверу информацию, что этот пользователь сейчас открыл сайт
+  socket.emit('user-online', { name: savedUserName });
+}
+
+// 2. Слушаем сервер: когда список пользователей онлайн меняется, обновляем точки на сайте
+socket.on('update-status', (usersOnlineList) => {
+  
+  // Находим все карточки сотрудников на странице
+  document.querySelectorAll('.card').forEach(card => {
+    const cardNameElement = card.querySelector('h3');
+    if (!cardNameElement) return;
+    
+    const personName = cardNameElement.textContent.trim();
+    const badge = card.querySelector('.status-badge');
+    const dot = card.querySelector('.status-dot');
+    
+    if (badge && dot) {
+      // Проверяем, есть ли имя этого сотрудника в полученном с сервера списке онлайн-игроков
+      const isOnlineNow = usersOnlineList.includes(personName);
+      
+      if (isOnlineNow) {
+        // Меняем классы индикатора на "В сети"
+        badge.className = 'status-badge online';
+        badge.innerHTML = '<span class="status-dot"></span>В сети';
+      } else {
+        // Меняем классы индикатора на "Не в сети"
+        badge.className = 'status-badge offline';
+        badge.innerHTML = '<span class="status-dot"></span>Не в сети';
+      }
+    }
+  });
+  
+});
