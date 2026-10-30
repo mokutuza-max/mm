@@ -24,9 +24,9 @@ function checkAuth(req, res, next) {
 }
 
 // Защищаем главные страницы сайта
-app.get('/', checkAuth, (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-app.get('/index.html', checkAuth, (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-app.get('/sostav.html', checkAuth, (req, res) => res.sendFile(path.join(__dirname, 'sostav.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/index.html', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/sostav.html', (req, res) => res.sendFile(path.join(__dirname, 'sostav.html')));
 
 // Обработчик самой формы регистрации при клике "Войти"
 app.post('/api/login', (req, res) => {
