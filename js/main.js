@@ -274,8 +274,12 @@ const awards = (s) => {
 const info = (i) => {
   const s = STAFF[i],
     n = s.name || "Вакантно";
-    
-  }
+  const m = openM(
+    `<div class="dt"><div class="ph">${ph(s)}</div><div><h2>${n}</h2><p class="pos">${s.pos}</p>${s.rank ? `<p><b>Воинское звание:</b> ${s.rank}</p>` : ""}<p><b>На посту с:</b> ${s.since || "—"}</p></div></div>${s.quote ? `<blockquote>«${s.quote}»<cite>— ${n}, ${s.pos}</cite></blockquote>` : '<p style="color:var(--mute);margin-bottom:16px">Должность вакантна.</p>'}${s.awards.length ? `<button class="btn" id="aw">Награды (${s.awards.length})</button>` : ""}`,
+  );
+  const b = m.querySelector("#aw");
+  if (b) b.onclick = () => awards(s);
+};
 
   const b = m.querySelector("#aw");
   if (b) b.onclick = () => awards(s);
