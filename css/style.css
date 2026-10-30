@@ -781,3 +781,103 @@ blockquote cite {
         margin-left: auto; /* Смещаем кнопку к правому краю на телефонах */
     }
 }
+
+/* ==========================================================================
+   СТИЛИ ДЛЯ СТРАНИЦЫ / ФОРМЫ РЕГИСТРАЦИИ (В СТИЛЕ МИНИСТЕРСТВА ОБОРОНЫ)
+   ========================================================================== */
+
+/* Общая обертка экрана авторизации (если она открыта поверх страницы) */
+.auth-layout {
+    background: #000000f2 !important; /* Глубокий темный полупрозрачный фон */
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+/* Контейнер самой формы авторизации */
+.auth-layout .mb {
+    max-width: 500px; /* Делаем окно аккуратным и не слишком широким */
+    width: 100%;
+    background: var(--pn); /* Внутренний фон карточек #141414 */
+    border: 1px solid var(--ln); /* Рамка #272727 */
+    border-top: 3px solid var(--or); /* Фирменная оливковая полоса сверху */
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Заголовок формы */
+.auth-layout .ah {
+    font-size: 28px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--ln);
+    padding-bottom: 14px;
+}
+
+/* Группы полей (Label + Input) */
+.auth-fields .field-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Текст подписей к полям */
+.auth-fields label {
+    font-family: Oswald, Impact, sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--mute);
+}
+
+/* Стилизация текстовых полей ввода */
+.auth-fields input {
+    width: 100%;
+    background: var(--bg); /* Фон поля #0a0a0a */
+    border: 1px solid var(--ln); /* Граница #272727 */
+    color: var(--ink);
+    padding: 12px 16px;
+    font-family: 'PT Sans', Arial, sans-serif;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Эффект при клике (фокусе) на поле ввода */
+.auth-fields input:focus {
+    outline: none;
+    border-color: var(--or); /* Оливковая подсветка */
+    box-shadow: inset 0 0 5px rgba(85, 88, 69, 0.2);
+}
+
+/* Плейсхолдеры (подсказки внутри полей) */
+.auth-fields input::placeholder {
+    color: #4a4a4a;
+}
+
+/* Кнопка "Войти в систему" (наследует стили главного CSS) */
+.auth-fields .btn {
+    width: 100%;
+    margin-top: 10px;
+    background: var(--or); /* Оливковый цвет фона */
+    color: #0a0a0a; /* Темный текст для контраста */
+    padding: 14px 32px;
+    font-family: Oswald, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border: 0;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+/* Эффект при наведении на кнопку */
+.auth-fields .btn:hover {
+    background: #6a6e57; /* Более светлый оливковый */
+}
+
+/* Эффект при нажатии на кнопку */
+.auth-fields .btn:active {
+    transform: scale(0.98);
+}
