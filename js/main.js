@@ -274,9 +274,42 @@ const awards = (s) => {
 const info = (i) => {
   const s = STAFF[i],
     n = s.name || "Вакантно";
+    
+  // 1. Создаем модальное окно и передаем блоку фото .ph атрибут data-bg
   const m = openM(
-    `<div class="dt"><div class="ph">${ph(s)}</div><div><h2>${n}</h2><p class="pos">${s.pos}</p>${s.rank ? `<p><b>Воинское звание:</b> ${s.rank}</p>` : ""}<p><b>На посту с:</b> ${s.since || "—"}</p></div></div>${s.quote ? `<blockquote>«${s.quote}»<cite>— ${n}, ${s.pos}</cite></blockquote>` : '<p style="color:var(--mute);margin-bottom:16px">Должность вакантна.</p>'}${s.awards.length ? `<button class="btn" id="aw">Награды (${s.awards.length})</button>` : ""}`,
+    `<div class="dt">
+      <div class="ph" data-bg="${s.bg}">${ph(s)}</div>
+      <div>
+        <h2>${n}</h2>
+        <p class="pos">${s.pos}</p>
+        ${s.rank ? `<p><b>Воинское звание:</b> ${s.rank}</p>` : ""}
+        <p><b>На посту с:</b> ${s.since || "—"}</p>
+      </div>
+    </div>
+    ${s.quote ? `<blockquote>«${s.quote}»<cite>— ${n}, ${s.pos}</cite></blockquote>` : '<p style="color:var(--mute);margin-bottom:16px">Должность вакантна.</p>'}
+    ${s.awards.length ? `<button class="btn" id="aw">Награды (${s.awards.length})</button>` : ""}`
   );
+
+  // 2. МГНОВЕННО ОТРИСОВЫВАЕМ И АНИМИРУЕМ УЗОР ВНУТРИ ОТКРЫТОГО МОДАЛЬНОГО ОКНА
+  const modalPh = m.querySelector(".dt .ph");
+  if (modalPh && modalPh.dataset.bg) {
+    modalPh.insertAdjacentHTML(
+      "afterbegin",
+      `<svg class="bg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${BG[modalPh.dataset.bg] || ""}</svg>`
+    );
+    
+    // Активируем pathLength и добавляем класс анимации через минимальный таймаут
+    const paths = modalPh.querySelectorAll(".bg *");
+    paths.forEach((x) => x.setAttribute("pathLength", 1));
+    
+    setTimeout(() => {
+      modalPh.classList.add("in");
+    }, 50);
+  }
+
+  const b = m.querySelector("#aw");
+  if (b) b.onclick = () => awards(s);
+};
   const b = m.querySelector("#aw");
   if (b) b.onclick = () => awards(s);
 };
