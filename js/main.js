@@ -24,7 +24,7 @@ const STAFF = [
     rank: "Полковник",
     since: "17 октября 2026 года",
     quote: "",
-    bg: "justice",
+    bg: "tank",
     awards: [],
   },
     {
