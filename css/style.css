@@ -2526,4 +2526,22 @@ blockquote cite {
         max-width: none
     }
 }
+/* =========================================
+   ФИКС ШАПКИ (МЕНЮ)
+   ========================================= */
+nav a {
+    white-space: nowrap !important; /* Запрещаем перенос текста на вторую строку */
+}
 
+/* На всякий случай чуть уменьшим отступы, чтобы всё влезло ровно */
+@media(min-width:1241px) {
+    .bar {
+        gap: 10px !important;
+    }
+    nav {
+        gap: 0 !important;
+    }
+    nav a {
+        padding: 8px 8px !important; 
+    }
+}
