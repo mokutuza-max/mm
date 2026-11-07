@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Вакансии и заявка на службу в Министерстве Обороны Кутузовского Федерального Округа.">
+    <title>Трудоустройство — МО Кутузовского ФО</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main>
+        <section class="top" data-bg="helmet">
+            <div class="wrap">
+                <p class="eyebrow">Кадровая служба</p>
+                <h1>Трудоустройство</h1>
+                <p>Служба в аппарате Министерства и подразделениях округа. Актуальные вакансии и подача заявки.</p>
+            </div>
+        </section>
+
+        <section class="s">
+            <div class="wrap">
+                <p class="eyebrow">Условия</p>
+                <h2>Мы предлагаем</h2>
+                <div class="grid g4">
+                    <article class="card rv">
+                        <span class="card-index">01</span>
+                        <h3>Стабильность</h3>
+                        <p>Государственные гарантии и социальная защищённость военнослужащих.</p>
+                    </article>
+                    <article class="card rv">
+                        <span class="card-index">02</span>
+                        <h3>Денежное довольствие</h3>
+                        <p>Конкурентоспособная оплата труда и поощрения за добросовестную службу.</p>
+                    </article>
+                    <article class="card rv">
+                        <span class="card-index">03</span>
+                        <h3>Развитие</h3>
+                        <p>Возможность карьерного роста, обучение и повышение квалификации.</p>
+                    </article>
+                    <article class="card rv">
+                        <span class="card-index">04</span>
+                        <h3>Социальный пакет</h3>
+                        <p>Льготы и гарантии, предусмотренные для сотрудников ведомства.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="s" style="padding-top:0">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Набор</p>
+                        <h2>Актуальные вакансии</h2>
+                    </div>
+                    <span class="admincount" id="vacancyCount"></span>
+                </div>
+                <div id="vacancyList" aria-live="polite">
+                    <div class="empty">Загрузка вакансий…</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="s band" id="applySection">
+            <div class="wrap two">
+                <div>
+                    <p class="eyebrow">Заявка</p>
+                    <h2>Подать заявление</h2>
+                    <p class="muted">Заполните форму. Заявка регистрируется в системе, а статус рассмотрения
+                        отображается в личном кабинете.</p>
+                    <ul class="req">
+                        <li>Укажите игровое имя и контактный e-mail.</li>
+                        <li>Выберите вакансию или укажите желаемую должность.</li>
+                        <li>Кратко опишите опыт и причину выбора службы.</li>
+                    </ul>
+                </div>
+                <div class="panel formpanel">
+                    <h2>Форма заявки</h2>
+                    <div class="msg" id="applyMsg" role="status" hidden></div>
+                    <form id="applyForm" novalidate>
+                        <div class="field">
+                            <label for="applyName">ФИО / игровое имя</label>
+                            <input id="applyName" name="full_name" type="text" required minlength="2" maxlength="120"
+                                autocomplete="name" placeholder="Иванов Иван Иванович">
+                        </div>
+                        <div class="field">
+                            <label for="applyEmail">E-mail</label>
+                            <input id="applyEmail" name="email" type="email" required autocomplete="email"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="field">
+                            <label for="applyDiscord">Discord</label>
+                            <input id="applyDiscord" name="discord" type="text" maxlength="80"
+                                placeholder="username">
+                        </div>
+                        <div class="field">
+                            <label for="applyPosition">Вакансия</label>
+                            <select id="applyPosition" name="position" required>
+                                <option value="">Загрузка вакансий…</option>
+                            </select>
+                        </div>
+                        <div class="field" id="customPositionField" hidden>
+                            <label for="applyCustomPosition">Желаемая должность</label>
+                            <input id="applyCustomPosition" type="text" maxlength="160"
+                                placeholder="Укажите должность">
+                        </div>
+                        <div class="field">
+                            <label for="applyAbout">О себе</label>
+                            <textarea id="applyAbout" name="about" rows="5" maxlength="5000"
+                                placeholder="Опыт, навыки, причина выбора службы"></textarea>
+                        </div>
+                        <label class="check">
+                            <input id="applyConsent" type="checkbox" required>
+                            <span>Я подтверждаю достоверность сведений и согласен на обработку данных
+                                в рамках игрового проекта.</span>
+                        </label>
+                        <button class="btn" type="submit" id="applySubmit">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/jobs.js"></script>
+</body>
+
+</html>

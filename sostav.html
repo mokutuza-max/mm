@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Руководство и состав Министерства Обороны Кутузовского Федерального Округа.">
+    <title>Руководство и состав — МО Кутузовского ФО</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main>
+        <section class="top" data-bg="crosshair">
+            <div class="wrap">
+                <p class="eyebrow">Кадры ведомства</p>
+                <h1>Руководство и состав</h1>
+                <p>Военнослужащие и сотрудники Министерства в порядке иерархии должностей.</p>
+            </div>
+        </section>
+        <section class="s">
+            <div class="wrap">
+                <div class="adminbar">
+                    <input id="staffSearch" type="search" placeholder="Поиск по ФИО, званию или должности">
+                    <select id="staffDepartment" aria-label="Подразделение">
+                        <option value="">Все подразделения</option>
+                    </select>
+                    <span class="admincount" id="staffCount"></span>
+                </div>
+                <div id="staffList" aria-live="polite">
+                    <div class="empty">Загрузка состава…</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/staff.js"></script>
+</body>
+
+</html>

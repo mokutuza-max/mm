@@ -1,0 +1,22 @@
+# Files that must not be published as Worker static assets.
+worker/
+migrations/
+node_modules/
+.wrangler/
+.git/
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+wrangler.toml
+package.json
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+README.md
+.assetsignore
+.gitignore
+*.log
+token*
+*.token
+secrets*

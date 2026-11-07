@@ -1,0 +1,32 @@
+account_id = "96c671ab69dbeff17ee0c8752f93b8e8"
+name = "mkfo-site"
+main = "worker/index.js"
+compatibility_date = "2025-01-01"
+
+[observability]
+enabled = true
+
+[assets]
+directory = "."
+binding = "ASSETS"
+run_worker_first = true
+# Страницы отдаёт Worker (он же проверяет доступ), поэтому встроенные
+# редиректы слоя ассетов с .html на «чистые» URL не нужны.
+html_handling = "none"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mkfo"
+database_id = "c25f8e19-885e-4940-b663-7060c39ddb4f"
+
+# [[r2_buckets]]
+# binding = "AVATARS"
+# bucket_name = "mkfo-avatars"
+# Бакет не обязателен: без него фото профиля хранятся в D1 (до 1 МБ).
+# Если создадите бакет, раскомментируйте блок и выполните npx wrangler deploy.
+
+[vars]
+# Публичный адрес сайта — должен совпадать с адресом, открытым в браузере.
+APP_URL = "https://mkfo-site.mkfo-dev.workers.dev"
+# Client ID приложения Discord (не секрет).
+DISCORD_CLIENT_ID = "1567130529671815180"

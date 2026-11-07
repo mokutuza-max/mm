@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Новости Министерства Обороны Кутузовского Федерального Округа.">
+    <title>Новости — МО Кутузовского ФО</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main>
+        <section class="top" data-bg="radio">
+            <div class="wrap">
+                <p class="eyebrow">Официальные сообщения</p>
+                <h1>Новости</h1>
+                <p>Оперативные сводки, учения, кадровые решения и заявления ведомства.</p>
+            </div>
+        </section>
+        <section class="s">
+            <div class="wrap">
+                <div class="newstoolbar">
+                    <div class="chips" id="newsCategories" aria-label="Категории новостей"></div>
+                    <input id="newsSearch" type="search" placeholder="Поиск по новостям">
+                </div>
+                <div class="newsgrid" id="newsList" aria-live="polite">
+                    <div class="empty">Загрузка новостей…</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/news.js"></script>
+</body>
+
+</html>

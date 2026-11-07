@@ -1,0 +1,22 @@
+{
+  "name": "mkfo-site",
+  "private": true,
+  "version": "1.1.0",
+  "description": "Сайт Министерства Обороны Кутузовского Федерального Округа (Cloudflare Workers + D1)",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:init:local": "wrangler d1 execute mkfo --local --file=./migrations/0001_init.sql",
+    "db:migrate:local": "wrangler d1 execute mkfo --local --file=./migrations/0002_avatar_d1.sql",
+    "db:content:local": "wrangler d1 execute mkfo --local --file=./migrations/0003_content.sql",
+    "db:seed:local": "wrangler d1 execute mkfo --local --file=./migrations/0004_seed.sql",
+    "db:init:remote": "wrangler d1 execute mkfo --remote --file=./migrations/0001_init.sql",
+    "db:migrate:remote": "wrangler d1 execute mkfo --remote --file=./migrations/0002_avatar_d1.sql",
+    "db:content:remote": "wrangler d1 execute mkfo --remote --file=./migrations/0003_content.sql",
+    "db:seed:remote": "wrangler d1 execute mkfo --remote --file=./migrations/0004_seed.sql",
+    "logs": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

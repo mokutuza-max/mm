@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Вход — МО Кутузовского ФО</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main>
+        <section class="top" data-bg="doc">
+            <div class="wrap">
+                <h1>Вход</h1>
+                <p>Авторизация на портале Министерства Обороны Кутузовского Федерального округа.</p>
+            </div>
+        </section>
+        <section class="authsec">
+            <div class="wrap">
+                <div class="authcard">
+                    <h1>Вход в аккаунт</h1>
+                    <p class="sub">Введите e-mail и пароль, указанные при регистрации.</p>
+                    <div class="msg" id="msg" role="status" hidden></div>
+                    <form id="loginForm" novalidate>
+                        <div class="field">
+                            <label for="email">E-mail</label>
+                            <input id="email" name="email" type="email" autocomplete="username" required
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="field">
+                            <label for="password">Пароль</label>
+                            <input id="password" name="password" type="password" autocomplete="current-password"
+                                required minlength="8" placeholder="••••••••">
+                        </div>
+                        <button class="btn" type="submit" id="submit">Войти</button>
+                    </form>
+                    <div class="or"><span>или</span></div>
+                    <a class="btn discord" id="discordLogin" href="/api/auth/discord/start?mode=login" hidden>Войти
+                        через Discord</a>
+                    <p class="authlinks">Нет аккаунта? <a href="registraciya.html">Зарегистрироваться</a></p>
+                    <p class="note">Первый зарегистрированный аккаунт автоматически получает права администратора.
+                        Аккаунты хранятся на сервере Cloudflare.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        (function () {
+            const form = document.getElementById("loginForm");
+            const msg = document.getElementById("msg");
+            const submit = document.getElementById("submit");
+
+            function show(text, ok) {
+                msg.hidden = false;
+                msg.className = "msg " + (ok ? "ok" : "err");
+                msg.textContent = text;
+            }
+
+            const next = (function () {
+                const raw = new URLSearchParams(location.search).get("next");
+                return raw && /^[a-z0-9_-]+\.html$/i.test(raw) ? raw : "akkaunt.html";
+            })();
+
+            const discordButton = document.getElementById("discordLogin");
+            if (Auth.config && Auth.config.discord) discordButton.hidden = false;
+
+            const discordMessages = {
+                not_linked: "Discord не привязан ни к одному аккаунту. Войдите по паролю и привяжите его в личном кабинете.",
+                blocked: "Аккаунт, привязанный к этому Discord, заблокирован.",
+                pending: "Аккаунт, привязанный к этому Discord, ожидает подтверждения.",
+                error: "Не удалось войти через Discord. Попробуйте ещё раз."
+            };
+            const discordResult = new URLSearchParams(location.search).get("discord");
+            if (discordResult && discordMessages[discordResult]) {
+                show(discordMessages[discordResult], false);
+            }
+
+            try {
+                const me = Auth.current();
+                if (me && !discordResult) show("Вы уже вошли как " + me.name + ". Можно войти в другой аккаунт.", true);
+            } catch (e) {
+                show(e.message);
+            }
+
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                msg.hidden = true;
+                const email = document.getElementById("email").value.trim();
+                const password = document.getElementById("password").value;
+                if (!email || !password) {
+                    show("Заполните e-mail и пароль.");
+                    return;
+                }
+                submit.disabled = true;
+                submit.textContent = "Проверка…";
+                try {
+                    await Auth.login(email, password);
+                    location.href = next;
+                } catch (err) {
+                    show(err.message || "Не удалось войти.");
+                    submit.disabled = false;
+                    submit.textContent = "Войти";
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

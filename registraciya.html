@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Регистрация — МО Кутузовского ФО</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main>
+        <section class="top" data-bg="star">
+            <div class="wrap">
+                <h1>Регистрация</h1>
+                <p>Создайте аккаунт гражданина на портале Министерства Обороны.</p>
+            </div>
+        </section>
+        <section class="authsec">
+            <div class="wrap">
+                <div class="authcard">
+                    <h1>Создать аккаунт</h1>
+                    <p class="sub">После регистрации вы сможете войти в личный кабинет. Должность и статус выдаёт
+                        администратор.</p>
+                    <div class="msg" id="msg" role="status" hidden></div>
+                    <form id="registerForm" novalidate>
+                        <div class="field">
+                            <label for="name">ФИО / отображаемое имя</label>
+                            <input id="name" name="name" type="text" autocomplete="name" required minlength="2"
+                                maxlength="60" placeholder="Иванов Иван Иванович">
+                        </div>
+                        <div class="field">
+                            <label for="email">E-mail</label>
+                            <input id="email" name="email" type="email" autocomplete="username" required
+                                placeholder="name@example.com">
+                            <p class="hint">Используется для входа. На него не отправляются письма.</p>
+                        </div>
+                        <div class="field">
+                            <label for="password">Пароль</label>
+                            <input id="password" name="password" type="password" autocomplete="new-password" required
+                                minlength="8" maxlength="128" placeholder="Не менее 8 символов">
+                        </div>
+                        <div class="field">
+                            <label for="password2">Повторите пароль</label>
+                            <input id="password2" name="password2" type="password" autocomplete="new-password" required
+                                minlength="8" maxlength="128" placeholder="Ещё раз">
+                        </div>
+                        <label class="check">
+                            <input id="terms" type="checkbox" required>
+                            <span>Я принимаю правила портала и понимаю, что это игровой проект GTA 5 RP (RMRP
+                                Кутузовский).</span>
+                        </label>
+                        <button class="btn" type="submit" id="submit">Зарегистрироваться</button>
+                    </form>
+                    <p class="authlinks">Уже есть аккаунт? <a href="vhod.html">Войти</a></p>
+                    <p class="note">Первый зарегистрированный аккаунт автоматически становится администратором. Аккаунты
+                        хранятся на сервере Cloudflare.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        (function () {
+            const form = document.getElementById("registerForm");
+            const msg = document.getElementById("msg");
+            const submit = document.getElementById("submit");
+
+            function show(text, ok) {
+                msg.hidden = false;
+                msg.className = "msg " + (ok ? "ok" : "err");
+                msg.textContent = text;
+            }
+
+            try {
+                const me = Auth.current();
+                if (me) show("Вы уже вошли как " + me.name + ". Новый аккаунт станет отдельной учётной записью.", true);
+            } catch (e) {
+                show(e.message);
+            }
+
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                msg.hidden = true;
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const password = document.getElementById("password").value;
+                const password2 = document.getElementById("password2").value;
+                const terms = document.getElementById("terms").checked;
+
+                if (name.length < 2) return show("Укажите имя (не менее 2 символов).");
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return show("Укажите корректный e-mail.");
+                if (password.length < 8) return show("Пароль должен содержать не менее 8 символов.");
+                if (password !== password2) return show("Пароли не совпадают.");
+                if (!terms) return show("Необходимо принять правила портала.");
+
+                submit.disabled = true;
+                submit.textContent = "Создание аккаунта…";
+                try {
+                    await Auth.register({ name: name, email: email, password: password });
+                    location.href = "akkaunt.html";
+                } catch (err) {
+                    show(err.message || "Не удалось создать аккаунт.");
+                    submit.disabled = false;
+                    submit.textContent = "Зарегистрироваться";
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

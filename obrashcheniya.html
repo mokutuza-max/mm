@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Обращения граждан в Министерство Обороны Кутузовского Федерального Округа.">
+    <title>Обращения граждан — МО Кутузовского ФО</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main>
+        <section class="top" data-bg="mail">
+            <div class="wrap">
+                <p class="eyebrow">Приём обращений</p>
+                <h1>Обращения граждан</h1>
+                <p>Направьте обращение в Министерство. Каждое обращение регистрируется в системе.</p>
+            </div>
+        </section>
+
+        <section class="s">
+            <div class="wrap two">
+                <div>
+                    <p class="eyebrow">Порядок</p>
+                    <h2>Как подать обращение</h2>
+                    <ol class="steps">
+                        <li class="rv"><i>1</i><span>Заполните форму: ФИО, e-mail, тема и текст обращения.</span></li>
+                        <li class="rv"><i>2</i><span>Обращение получает статус «Новое» и регистрируется в D1.</span></li>
+                        <li class="rv"><i>3</i><span>Сотрудник аппарата рассматривает обращение и готовит ответ.</span></li>
+                        <li class="rv"><i>4</i><span>Авторизованные граждане видят ответ в личном кабинете.</span></li>
+                    </ol>
+                    <p class="note">Срок рассмотрения — до 30 календарных дней. Не указывайте в обращении
+                        персональные данные третьих лиц без их согласия.</p>
+                    <p class="note auth-only" hidden>Вы вошли в аккаунт — обращения автоматически привязываются
+                        к профилю. <a href="akkaunt.html">Открыть личный кабинет</a>.</p>
+                </div>
+
+                <div class="panel formpanel">
+                    <h2>Форма обращения</h2>
+                    <div class="msg" id="appealMsg" role="status" hidden></div>
+                    <form id="appealForm" novalidate>
+                        <div class="field">
+                            <label for="appealName">ФИО / отображаемое имя</label>
+                            <input id="appealName" name="name" type="text" required minlength="2" maxlength="120"
+                                autocomplete="name" placeholder="Иванов Иван Иванович">
+                        </div>
+                        <div class="field">
+                            <label for="appealEmail">E-mail для ответа</label>
+                            <input id="appealEmail" name="email" type="email" required autocomplete="email"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="field">
+                            <label for="appealSubject">Тема обращения</label>
+                            <input id="appealSubject" name="subject" type="text" required maxlength="200"
+                                placeholder="Кратко о вопросе">
+                        </div>
+                        <div class="field">
+                            <label for="appealText">Текст обращения</label>
+                            <textarea id="appealText" name="text" rows="8" required maxlength="10000"
+                                placeholder="Опишите ситуацию подробно"></textarea>
+                        </div>
+                        <label class="check">
+                            <input id="appealConsent" type="checkbox" required>
+                            <span>Я подтверждаю достоверность сведений и согласен на обработку данных
+                                в рамках игрового проекта.</span>
+                        </label>
+                        <button class="btn" type="submit" id="appealSubmit">Отправить обращение</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/appeals.js"></script>
+</body>
+
+</html>
